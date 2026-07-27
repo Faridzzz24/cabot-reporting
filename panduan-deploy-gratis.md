@@ -1,12 +1,38 @@
 # Panduan Deploy Web Laravel Gratis, 24/7, dan Mudah
 
-Untuk mendeploy website pelaporan (Laravel) ini agar bisa diakses secara online, gratis selamanya (24/7 tanpa *sleep*), dan tidak ribet, ada beberapa opsi yang bisa digunakan. 
+Untuk mendeploy website pelaporan (Laravel) ini agar bisa diakses secara online, gratis selamanya (24/7 tanpa *sleep*), dan tidak ribet, ada beberapa opsi yang bisa digunakan.
 
-Berikut adalah **2 opsi terbaik** yang disesuaikan dengan tingkat kemudahan yang Anda inginkan.
+**Proyek ini saat ini dikonfigurasi untuk deploy menggunakan Opsi 4 (Vercel + Aiven MySQL).**
+
+> Untuk panduan langkah-langkah detail deploy Vercel + Aiven, lihat file [DEPLOY.md](DEPLOY.md).
+
+Berikut adalah semua opsi yang tersedia:
 
 ---
 
-## Opsi 1: Paling Mudah (Shared Hosting Tradisional)
+## ⭐ Opsi Utama (Saat Ini Digunakan): Vercel + Aiven MySQL
+
+Proyek ini sudah dikonfigurasi untuk deploy ke **Vercel** (hosting serverless gratis) dengan database **Aiven MySQL** (database cloud gratis). Kombinasi ini memberikan:
+- **Deploy otomatis** — Push ke GitHub → Vercel otomatis update
+- **Database persisten** — Data tersimpan permanen di Aiven MySQL (tidak hilang)
+- **Gratis 24/7** — Keduanya memiliki free tier
+
+**Kelebihan:** Setup cepat, deploy otomatis, data aman di cloud.
+**Kekurangan:** Cold start 2-3 detik pada request pertama, file upload bersifat sementara (butuh cloud storage untuk file).
+
+### Arsitektur:
+```
+[GitHub] → push → [Vercel] → build CSS/JS → serve website
+                      ↓
+              [Aiven MySQL] → simpan data permanen
+```
+
+### Langkah Deploy:
+Lihat **[DEPLOY.md](DEPLOY.md)** untuk panduan lengkap.
+
+---
+
+## Opsi Alternatif 1: Paling Mudah (Shared Hosting Tradisional)
 Opsi ini sangat cocok jika Anda tidak ingin repot berurusan dengan *command line* atau terminal saat proses deployment. Kita akan menggunakan **InfinityFree** yang menyediakan Hosting + Database MySQL gratis yang aktif 24/7.
 
 **Kelebihan:** Sangat mudah, sudah termasuk database MySQL, gratis selamanya.
@@ -50,10 +76,10 @@ Opsi ini sangat cocok jika Anda tidak ingin repot berurusan dengan *command line
 
 ---
 
-## Opsi 2: Modern & Otomatis (GitHub + Koyeb + Aiven)
-Opsi ini cocok jika Anda ingin sistem yang otomatis. Setiap kali Anda melakukan perubahan *code* dan melakukan *Push* ke GitHub, website akan otomatis terupdate. Sistem ini menggunakan arsitektur cloud modern yang dijamin aktif 24/7 tanpa batas waktu.
+## Opsi Alternatif 2: Modern & Otomatis (GitHub + Koyeb + Aiven)
+Opsi ini cocok jika Anda ingin sistem yang otomatis dengan server yang selalu hidup (bukan serverless). Setiap kali Anda melakukan perubahan *code* dan melakukan *Push* ke GitHub, website akan otomatis terupdate.
 
-**Kelebihan:** Deploy otomatis (CI/CD), performa lebih cepat, cocok untuk portofolio profesional.
+**Kelebihan:** Deploy otomatis (CI/CD), performa lebih cepat (tidak ada cold start), cocok untuk portofolio profesional.
 **Kekurangan:** Setup awal membutuhkan koneksi ke GitHub.
 
 ### Langkah 1: Siapkan Database Gratis 24/7 (Aiven)
@@ -96,7 +122,7 @@ Opsi ini cocok jika Anda ingin sistem yang otomatis. Setiap kali Anda melakukan 
 
 ---
 
-## Opsi 3: Paling Cepat & Spesifikasi Tertinggi (Oracle Cloud "Always Free" VPS)
+## Opsi Alternatif 3: Paling Cepat & Spesifikasi Tertinggi (Oracle Cloud "Always Free" VPS)
 Jika Anda memiliki Kartu Debit/Kredit (hanya untuk verifikasi, tidak akan dipotong), Anda bisa mendapatkan server VPS (Virtual Private Server) yang spesifikasinya sangat tinggi (hingga 4 Core ARM, 24GB RAM) **secara gratis seumur hidup** dari Oracle.
 
 **Kelebihan:** 24/7 mutlak, gratis selamanya, spesifikasi dewa, server milik sendiri (bebas install apapun).
@@ -111,25 +137,9 @@ Jika Anda memiliki Kartu Debit/Kredit (hanya untuk verifikasi, tidak akan dipoto
 
 ---
 
-## Opsi 4: Alternatif Serverless Populer (Vercel + Neon.tech)
-Vercel sangat populer untuk deploy gratis 24/7. Walaupun aslinya untuk Node.js/Next.js, Anda tetap bisa mendeploy Laravel ke Vercel menggunakan ekstensi komunitas.
-
-**Kelebihan:** Setup sangat cepat via GitHub, 24/7, otomatis update.
-**Kekurangan:** Karena sistemnya *Serverless*, terkadang butuh waktu loading 2-3 detik pada *request* pertama jika web sedang sepi (disebut *Cold Start*).
-
-### Langkah-langkah:
-1. Buat database PostgreSQL gratis 24/7 di [Neon.tech](https://neon.tech) atau [Supabase](https://supabase.com) (karena layanan gratis MySQL yang andal semakin langka).
-2. Install package **vercel-php** di proyek Laravel Anda menggunakan *Composer*.
-3. Buat file bernama `vercel.json` di proyek Anda untuk mengarahkan request ke `public/index.php`.
-4. Push kode ke **GitHub**.
-5. Login ke [Vercel](https://vercel.com), klik **Add New Project**, dan pilih repository GitHub Anda.
-6. Masukkan konfigurasi database dari Neon/Supabase ke bagian *Environment Variables* di dashboard Vercel.
-7. Klik **Deploy** dan selesai!
-
----
-
 ### Kesimpulan
-- Jika Anda ingin cara lama yang sekadar **Upload-lalu-jalan** (Drag & Drop): Gunakan **Opsi 1 (InfinityFree)**.
-- Jika Anda ingin cara yang lebih **Profesional, Otomatis Update, dan Stabil**: Gunakan **Opsi 2 (Koyeb + Aiven)**.
-- Jika Anda ingin punya **Server Pribadi super kencang & gratis selamanya**: Gunakan **Opsi 3 (Oracle Cloud)**.
-- Jika Anda terbiasa dengan **Ekosistem Modern (Serverless)**: Gunakan **Opsi 4 (Vercel + Neon)**.
+- **Saat ini proyek ini menggunakan:** **Vercel + Aiven MySQL** (Opsi Utama di atas). Lihat [DEPLOY.md](DEPLOY.md) untuk panduan deploy.
+- Jika Anda ingin cara lama yang sekadar **Upload-lalu-jalan** (Drag & Drop): Gunakan **Opsi Alternatif 1 (InfinityFree)**.
+- Jika Anda ingin cara yang lebih **Profesional, Otomatis Update, dan Stabil** (tanpa cold start): Gunakan **Opsi Alternatif 2 (Koyeb + Aiven)**.
+- Jika Anda ingin punya **Server Pribadi super kencang & gratis selamanya**: Gunakan **Opsi Alternatif 3 (Oracle Cloud)**.
+

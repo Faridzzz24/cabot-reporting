@@ -24,13 +24,14 @@ foreach (['app', 'framework/cache/data', 'framework/sessions', 'framework/views'
     }
 }
 
-// Paksa konfigurasi yang kompatibel dengan serverless (Vercel)
-// Session tidak bisa pakai database/file di serverless, gunakan cookie
-$_ENV['SESSION_DRIVER'] = 'cookie';
-$_SERVER['SESSION_DRIVER'] = 'cookie';
-putenv('SESSION_DRIVER=cookie');
+// ── Konfigurasi Serverless (Vercel) ─────────────────────────
 
-// Cache tidak bisa pakai database/file di serverless, gunakan array
+// Session menggunakan database (persisten di Aiven MySQL)
+$_ENV['SESSION_DRIVER'] = 'database';
+$_SERVER['SESSION_DRIVER'] = 'database';
+putenv('SESSION_DRIVER=database');
+
+// Cache menggunakan array (tidak butuh persistence di serverless)
 $_ENV['CACHE_STORE'] = 'array';
 $_SERVER['CACHE_STORE'] = 'array';
 putenv('CACHE_STORE=array');
@@ -40,65 +41,32 @@ $_ENV['LOG_CHANNEL'] = 'errorlog';
 $_SERVER['LOG_CHANNEL'] = 'errorlog';
 putenv('LOG_CHANNEL=errorlog');
 
-// Paksa APP_ENV dan APP_DEBUG untuk debugging sementara
+// Production mode
 $_ENV['APP_ENV'] = 'production';
 $_SERVER['APP_ENV'] = 'production';
 putenv('APP_ENV=production');
+
+$_ENV['APP_DEBUG'] = 'false';
+$_SERVER['APP_DEBUG'] = 'false';
+putenv('APP_DEBUG=false');
 
 // Force HTTPS untuk Vercel agar asset/CSS tidak terblokir (Mixed Content)
 $_SERVER['HTTPS'] = 'on';
 $_ENV['HTTPS'] = 'on';
 putenv('HTTPS=on');
 
-// SEMENTARA: Aktifkan debug agar error terlihat
-$_ENV['APP_DEBUG'] = 'true';
-$_SERVER['APP_DEBUG'] = 'true';
-putenv('APP_DEBUG=true');
-
-// Set APP_KEY langsung (karena .env mungkin tidak terbaca di Vercel)
-$_ENV['APP_KEY'] = 'base64:CYyVf2RfIYtdDB+cv9llBTcrnGOa5IwOdvUhV3rWnUA=';
-$_SERVER['APP_KEY'] = 'base64:CYyVf2RfIYtdDB+cv9llBTcrnGOa5IwOdvUhV3rWnUA=';
-putenv('APP_KEY=base64:CYyVf2RfIYtdDB+cv9llBTcrnGOa5IwOdvUhV3rWnUA=');
-
-// Paksa DB connection ke sqlite dengan path /tmp agar tidak crash
-$_ENV['DB_CONNECTION'] = 'sqlite';
-$_SERVER['DB_CONNECTION'] = 'sqlite';
-putenv('DB_CONNECTION=sqlite');
-$_ENV['DB_DATABASE'] = '/tmp/database.sqlite';
-$_SERVER['DB_DATABASE'] = '/tmp/database.sqlite';
-putenv('DB_DATABASE=/tmp/database.sqlite');
-
-// Auto-migrate & seed saat cold start (SQLite baru dibuat di /tmp)
-$dbFile = '/tmp/database.sqlite';
-$migrated = '/tmp/.migrated';
-
-if (!file_exists($dbFile) || !file_exists($migrated)) {
-    // Buat file SQLite kosong
-    if (!file_exists($dbFile)) {
-        touch($dbFile);
-    }
-    
-    // Boot aplikasi untuk menjalankan Artisan
-    $kernel = $app->make(\Illuminate\Contracts\Console\Kernel::class);
-    $kernel->bootstrap();
-    
-    // Jalankan migration
-    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
-    
-    // Jalankan seeder (buat user default)
-    \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
-    
-    // Tandai bahwa migration sudah jalan
-    file_put_contents($migrated, date('Y-m-d H:i:s'));
-}
+// ── Database: Semua credential dibaca dari Environment Variables Vercel ──
+// Tidak perlu hardcode — set di Vercel Dashboard:
+//   DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD
+//   APP_KEY, APP_URL
 
 try {
     $app->handleRequest(Request::capture());
 } catch (\Throwable $e) {
-    // Tampilkan error detail untuk debugging
+    // Log error ke Vercel Function Logs
     error_log('Laravel Error: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
-    
+
     http_response_code(500);
-    echo '<h1>Laravel Error</h1>';
-    echo '<pre>' . htmlspecialchars($e->getMessage()) . "\n\n" . htmlspecialchars($e->getTraceAsString()) . '</pre>';
+    echo '<h1>Server Error</h1>';
+    echo '<p>Terjadi kesalahan internal. Silakan coba lagi nanti.</p>';
 }
