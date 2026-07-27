@@ -26,11 +26,6 @@ foreach (['app', 'framework/cache/data', 'framework/sessions', 'framework/views'
 
 // ── Konfigurasi Serverless (Vercel) ─────────────────────────
 
-// Session menggunakan database (persisten di Aiven MySQL)
-$_ENV['SESSION_DRIVER'] = 'database';
-$_SERVER['SESSION_DRIVER'] = 'database';
-putenv('SESSION_DRIVER=database');
-
 // Cache menggunakan array (tidak butuh persistence di serverless)
 $_ENV['CACHE_STORE'] = 'array';
 $_SERVER['CACHE_STORE'] = 'array';
@@ -46,27 +41,73 @@ $_ENV['APP_ENV'] = 'production';
 $_SERVER['APP_ENV'] = 'production';
 putenv('APP_ENV=production');
 
-$_ENV['APP_DEBUG'] = 'false';
-$_SERVER['APP_DEBUG'] = 'false';
-putenv('APP_DEBUG=false');
+$_ENV['APP_DEBUG'] = 'true';
+$_SERVER['APP_DEBUG'] = 'true';
+putenv('APP_DEBUG=true');
 
 // Force HTTPS untuk Vercel agar asset/CSS tidak terblokir (Mixed Content)
 $_SERVER['HTTPS'] = 'on';
 $_ENV['HTTPS'] = 'on';
 putenv('HTTPS=on');
 
-// ── Database: Semua credential dibaca dari Environment Variables Vercel ──
-// Tidak perlu hardcode — set di Vercel Dashboard:
-//   DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD
-//   APP_KEY, APP_URL
+// Set APP_KEY langsung (karena .env tidak terbaca di Vercel)
+$_ENV['APP_KEY'] = 'base64:CYyVf2RfIYtdDB+cv9llBTcrnGOa5IwOdvUhV3rWnUA=';
+$_SERVER['APP_KEY'] = 'base64:CYyVf2RfIYtdDB+cv9llBTcrnGOa5IwOdvUhV3rWnUA=';
+putenv('APP_KEY=base64:CYyVf2RfIYtdDB+cv9llBTcrnGOa5IwOdvUhV3rWnUA=');
+
+// ── Database: Aiven MySQL (dari Environment Variables Vercel) ──
+// Cek apakah credential Aiven sudah di-set di Vercel Dashboard
+$dbHost = getenv('DB_HOST') ?: ($_ENV['DB_HOST'] ?? null);
+
+if ($dbHost && $dbHost !== 'your-mysql-host.aiven.io') {
+    // ✅ Aiven MySQL sudah dikonfigurasi — gunakan MySQL
+    $_ENV['DB_CONNECTION'] = 'mysql';
+    $_SERVER['DB_CONNECTION'] = 'mysql';
+    putenv('DB_CONNECTION=mysql');
+
+    // Session bisa pakai database karena MySQL persisten
+    $_ENV['SESSION_DRIVER'] = 'database';
+    $_SERVER['SESSION_DRIVER'] = 'database';
+    putenv('SESSION_DRIVER=database');
+} else {
+    // ⚠️ Aiven belum dikonfigurasi — fallback ke SQLite sementara
+    $_ENV['DB_CONNECTION'] = 'sqlite';
+    $_SERVER['DB_CONNECTION'] = 'sqlite';
+    putenv('DB_CONNECTION=sqlite');
+    $_ENV['DB_DATABASE'] = '/tmp/database.sqlite';
+    $_SERVER['DB_DATABASE'] = '/tmp/database.sqlite';
+    putenv('DB_DATABASE=/tmp/database.sqlite');
+
+    // Session pakai cookie (SQLite di /tmp tidak persisten)
+    $_ENV['SESSION_DRIVER'] = 'cookie';
+    $_SERVER['SESSION_DRIVER'] = 'cookie';
+    putenv('SESSION_DRIVER=cookie');
+
+    // Auto-migrate & seed saat cold start (SQLite baru dibuat di /tmp)
+    $dbFile = '/tmp/database.sqlite';
+    $migrated = '/tmp/.migrated';
+
+    if (!file_exists($dbFile) || !file_exists($migrated)) {
+        if (!file_exists($dbFile)) {
+            touch($dbFile);
+        }
+
+        $kernel = $app->make(\Illuminate\Contracts\Console\Kernel::class);
+        $kernel->bootstrap();
+
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+
+        file_put_contents($migrated, date('Y-m-d H:i:s'));
+    }
+}
 
 try {
     $app->handleRequest(Request::capture());
 } catch (\Throwable $e) {
-    // Log error ke Vercel Function Logs
     error_log('Laravel Error: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
 
     http_response_code(500);
-    echo '<h1>Server Error</h1>';
-    echo '<p>Terjadi kesalahan internal. Silakan coba lagi nanti.</p>';
+    echo '<h1>Laravel Error</h1>';
+    echo '<pre>' . htmlspecialchars($e->getMessage()) . "\n\n" . htmlspecialchars($e->getTraceAsString()) . '</pre>';
 }
