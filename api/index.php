@@ -56,6 +56,19 @@ $_SERVER['APP_KEY'] = 'base64:CYyVf2RfIYtdDB+cv9llBTcrnGOa5IwOdvUhV3rWnUA=';
 putenv('APP_KEY=base64:CYyVf2RfIYtdDB+cv9llBTcrnGOa5IwOdvUhV3rWnUA=');
 
 // ── Database: Aiven MySQL (dari Environment Variables Vercel) ──
+// [DEBUG] Cek apakah file SSL CA cert ada di deployment
+$sslCa = getenv('MYSQL_ATTR_SSL_CA') ?: ($_ENV['MYSQL_ATTR_SSL_CA'] ?? null);
+if ($sslCa) {
+    $certPath = dirname(__DIR__) . '/' . $sslCa;
+    if (!file_exists($certPath)) {
+        error_log('[SSL-DEBUG] CA cert NOT FOUND at: ' . $certPath);
+    } else {
+        error_log('[SSL-DEBUG] CA cert OK at: ' . $certPath);
+    }
+} else {
+    error_log('[SSL-DEBUG] MYSQL_ATTR_SSL_CA env var is NOT SET');
+}
+
 // Cek apakah credential Aiven sudah di-set di Vercel Dashboard
 $dbHost = getenv('DB_HOST') ?: ($_ENV['DB_HOST'] ?? null);
 
