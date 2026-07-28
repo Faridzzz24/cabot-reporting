@@ -12,6 +12,7 @@ Route::post('/report', [ReportController::class, 'store'])->name('report.store')
 Route::get('/report/confirmation/{trackingCode}', [ReportController::class, 'confirmation'])->name('report.confirmation');
 Route::get('/track', [ReportController::class, 'track'])->name('report.track');
 Route::post('/track', [ReportController::class, 'trackResult'])->name('report.track.result');
+Route::get('/photo/{id}', [DashboardController::class, 'servePhoto'])->name('photo.serve');
 
 // ── Auth ────────────────────────────────────────────────
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

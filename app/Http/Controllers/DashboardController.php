@@ -235,13 +235,29 @@ class DashboardController extends Controller
     {
         $report = IncidentReport::findOrFail($id);
         
-        // Hapus foto jika ada
-        if ($report->photo_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($report->photo_path)) {
-            \Illuminate\Support\Facades\Storage::disk('public')->delete($report->photo_path);
-        }
-        
         $report->delete();
 
         return redirect()->route('dashboard')->with('success', 'Laporan berhasil dihapus secara permanen.');
+    }
+
+    /**
+     * Serve foto dari database.
+     */
+    public function servePhoto(int $id)
+    {
+        $report = IncidentReport::findOrFail($id);
+
+        if (!$report->photo_data) {
+            abort(404, 'Foto tidak ditemukan.');
+        }
+
+        $imageData = base64_decode($report->photo_data);
+        $mime = $report->photo_mime ?? 'image/jpeg';
+
+        return response($imageData, 200, [
+            'Content-Type' => $mime,
+            'Content-Length' => strlen($imageData),
+            'Cache-Control' => 'public, max-age=86400',
+        ]);
     }
 }

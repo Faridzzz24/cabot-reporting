@@ -57,10 +57,16 @@ class ReportController extends Controller
             'reporter_phone' => ['nullable', 'string', 'max:20'],
         ]);
 
-        // Handle photo upload
+        // Handle photo upload — simpan ke database (bukan filesystem)
+        // karena Vercel filesystem ephemeral
         $photoPath = null;
+        $photoData = null;
+        $photoMime = null;
         if ($request->hasFile('photo')) {
-            $photoPath = $request->file('photo')->store('incident-photos', 'public');
+            $file = $request->file('photo');
+            $photoPath = $file->getClientOriginalName();
+            $photoMime = $file->getMimeType();
+            $photoData = base64_encode(file_get_contents($file->getRealPath()));
         }
 
         // Create the report — model will enforce anonymity rules
@@ -72,7 +78,8 @@ class ReportController extends Controller
             'incident_date' => $validated['incident_date'],
             'incident_time' => $validated['incident_time'] ?? null,
             'photo_path' => $photoPath,
-            'reporter_name' => $request->reporter_name,
+            'photo_data' => $photoData,
+            'photo_mime' => $photoMime,
             'reporter_name' => $validated['reporter_name'] ?? null,
             'reporter_department' => $validated['reporter_department'] ?? null,
             'reporter_phone' => $validated['reporter_phone'] ?? null,

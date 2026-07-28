@@ -18,6 +18,8 @@ class IncidentReport extends Model
         'incident_date',
         'incident_time',
         'photo_path',
+        'photo_data',
+        'photo_mime',
         'is_anonymous',
         'reporter_name',
         'reporter_department',

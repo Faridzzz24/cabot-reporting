@@ -59,10 +59,10 @@
                 <p class="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">{{ $report->description }}</p>
             </div>
 
-            @if($report->photo_path)
+            @if($report->photo_data)
             <div class="glass-card p-6 animate-fade-in-up" style="animation-delay: 0.15s">
                 <h3 class="text-sm font-semibold text-gray-900 mb-3">Foto Bukti</h3>
-                <img src="{{ asset('storage/' . $report->photo_path) }}" alt="Foto bukti insiden" class="rounded-xl max-h-96 w-auto border border-gray-200">
+                <img src="{{ route('photo.serve', $report->id) }}" alt="Foto bukti insiden" class="rounded-xl max-h-96 w-auto border border-gray-200">
             </div>
             @endif
 
