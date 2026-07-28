@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AuditLog;
 use App\Models\IncidentReport;
 use App\Models\User;
+use App\Services\RcaService;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -259,5 +260,80 @@ class DashboardController extends Controller
             'Content-Length' => strlen($imageData),
             'Cache-Control' => 'public, max-age=86400',
         ]);
+    }
+
+    /**
+     * Generate RCA menggunakan AI (Anthropic Claude).
+     */
+    public function generateRca(Request $request, int $id)
+    {
+        $report = IncidentReport::findOrFail($id);
+        $service = new RcaService();
+        $result = $service->generateRca($report);
+
+        if ($result['success']) {
+            // Simpan draft langsung ke database
+            $report->update([
+                'rca_data' => $result['data'],
+                'rca_generated_at' => now(),
+            ]);
+
+            // Audit log
+            AuditLog::create([
+                'user_id' => $request->user()->id,
+                'incident_report_id' => $report->id,
+                'action' => 'rca_generated',
+                'details' => [
+                    'model' => config('services.groq.model', 'llama-3.3-70b-versatile'),
+                ],
+                'ip_address' => $request->ip(),
+            ]);
+        }
+
+        return response()->json($result);
+    }
+
+    /**
+     * Simpan RCA yang sudah di-review/edit oleh user.
+     */
+    public function saveRca(Request $request, int $id)
+    {
+        $validated = $request->validate([
+            'rca_data' => ['required', 'array'],
+            'rca_data.akar_masalah' => ['required', 'array', 'min:1'],
+            'rca_data.kategori' => ['required', 'array'],
+            'rca_data.kategori.manusia' => ['required', 'string'],
+            'rca_data.kategori.proses' => ['required', 'string'],
+            'rca_data.kategori.peralatan' => ['required', 'string'],
+            'rca_data.kategori.lingkungan' => ['required', 'string'],
+            'rca_data.rekomendasi' => ['required', 'array', 'min:1'],
+        ]);
+
+        $report = IncidentReport::findOrFail($id);
+
+        // Mark as reviewed by human
+        $rcaData = $validated['rca_data'];
+        if (isset($rcaData['meta'])) {
+            $rcaData['meta']['status'] = 'reviewed';
+            $rcaData['meta']['reviewed_by'] = $request->user()->name;
+            $rcaData['meta']['reviewed_at'] = now()->toIso8601String();
+        }
+
+        $report->update([
+            'rca_data' => $rcaData,
+        ]);
+
+        // Audit log
+        AuditLog::create([
+            'user_id' => $request->user()->id,
+            'incident_report_id' => $report->id,
+            'action' => 'rca_saved',
+            'details' => [
+                'reviewed_by' => $request->user()->name,
+            ],
+            'ip_address' => $request->ip(),
+        ]);
+
+        return back()->with('success', 'RCA berhasil disimpan.');
     }
 }

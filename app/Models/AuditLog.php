@@ -49,6 +49,8 @@ class AuditLog extends Model
             'assigned' => 'Menugaskan',
             'commented' => 'Menambah Catatan',
             'exported' => 'Mengekspor Data',
+            'rca_generated' => 'Generate RCA (AI)',
+            'rca_saved' => 'Menyimpan RCA',
             default => $this->action,
         };
     }

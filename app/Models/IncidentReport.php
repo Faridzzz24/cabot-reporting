@@ -28,6 +28,8 @@ class IncidentReport extends Model
         'assigned_to',
         'resolution_notes',
         'resolved_at',
+        'rca_data',
+        'rca_generated_at',
     ];
 
     protected function casts(): array
@@ -36,6 +38,8 @@ class IncidentReport extends Model
             'is_anonymous' => 'boolean',
             'incident_date' => 'date',
             'resolved_at' => 'datetime',
+            'rca_data' => 'array',
+            'rca_generated_at' => 'datetime',
         ];
     }
 

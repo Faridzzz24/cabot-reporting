@@ -28,6 +28,10 @@ Route::middleware(['auth', 'role:admin,hse_officer,supervisor'])->prefix('dashbo
     Route::delete('/reports/{id}', [DashboardController::class, 'destroy'])->name('reports.destroy');
     Route::get('/export', [DashboardController::class, 'export'])->name('reports.export');
 
+    // RCA AI
+    Route::post('/reports/{id}/generate-rca', [DashboardController::class, 'generateRca'])->name('reports.generateRca');
+    Route::patch('/reports/{id}/save-rca', [DashboardController::class, 'saveRca'])->name('reports.saveRca');
+
     // Manajemen User (admin only)
     Route::middleware('role:admin')->group(function () {
         Route::resource('users', UserController::class)->except(['create', 'edit', 'show']);
