@@ -190,8 +190,8 @@
                     <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Kode</th>
                     <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Jenis</th>
                     <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
-                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Urgensi</th>
-                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Status</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Urgensi</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Status</th>
                     <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
                     <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
                     <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Aksi</th>
@@ -212,21 +212,21 @@
                     <td class="px-4 sm:px-6 py-3 sm:py-4 hidden sm:table-cell">
                         <span class="text-gray-500 text-xs">{{ Str::limit($report->location, 20) }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4">
-                        <span class="px-1 sm:px-2 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-semibold whitespace-nowrap
-                            {{ $report->urgency === 'rendah' ? 'bg-emerald-100 text-emerald-700' : '' }}
-                            {{ $report->urgency === 'sedang' ? 'bg-amber-100 text-amber-700' : '' }}
-                            {{ $report->urgency === 'tinggi' ? 'bg-orange-100 text-orange-700' : '' }}
-                            {{ $report->urgency === 'kritis' ? 'bg-red-100 text-red-700' : '' }}
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                        <span class="px-2 sm:px-3 py-1 rounded-full text-[10px] font-bold tracking-wide shadow-sm border whitespace-nowrap
+                            {{ $report->urgency === 'rendah' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : '' }}
+                            {{ $report->urgency === 'sedang' ? 'bg-amber-50 text-amber-700 border-amber-200' : '' }}
+                            {{ $report->urgency === 'tinggi' ? 'bg-orange-50 text-orange-700 border-orange-200' : '' }}
+                            {{ $report->urgency === 'kritis' ? 'bg-red-50 text-red-700 border-red-200' : '' }}
                         ">{{ $report->urgency_label }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4">
-                        <span class="px-1 sm:px-2 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-semibold whitespace-nowrap
-                            {{ $report->status === 'baru' ? 'bg-blue-100 text-blue-700' : '' }}
-                            {{ $report->status === 'ditinjau' ? 'bg-purple-100 text-purple-700' : '' }}
-                            {{ $report->status === 'dalam_penanganan' ? 'bg-amber-100 text-amber-700' : '' }}
-                            {{ $report->status === 'selesai' ? 'bg-emerald-100 text-emerald-700' : '' }}
-                            {{ $report->status === 'ditolak' ? 'bg-red-100 text-red-700' : '' }}
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                        <span class="px-2 sm:px-3 py-1 rounded-full text-[10px] font-bold tracking-wide shadow-sm border whitespace-nowrap
+                            {{ $report->status === 'baru' ? 'bg-blue-50 text-blue-700 border-blue-200' : '' }}
+                            {{ $report->status === 'ditinjau' ? 'bg-purple-50 text-purple-700 border-purple-200' : '' }}
+                            {{ $report->status === 'dalam_penanganan' ? 'bg-indigo-50 text-indigo-700 border-indigo-200' : '' }}
+                            {{ $report->status === 'selesai' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : '' }}
+                            {{ $report->status === 'ditolak' ? 'bg-red-50 text-red-700 border-red-200' : '' }}
                         ">{{ $report->status_label }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 hidden md:table-cell">
