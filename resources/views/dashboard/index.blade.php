@@ -131,6 +131,12 @@
 
 {{-- Reports Table --}}
 <div class="glass-card overflow-hidden animate-fade-in-up" style="animation-delay: 0.4s">
+    <div class="px-5 py-4 border-b border-gray-100 flex justify-between items-center bg-white relative z-10">
+        <h3 class="font-semibold text-gray-900">Daftar Laporan</h3>
+        <button type="button" id="toggle-select-mode" class="text-xs font-medium text-gray-500 hover:text-cabot-red transition-colors bg-gray-100 hover:bg-red-50 px-3 py-1.5 rounded-md">
+            Pilih Laporan
+        </button>
+    </div>
     <form id="bulk-delete-form" method="POST" action="{{ route('reports.bulkDestroy') }}">
         @csrf
         @method('DELETE')
@@ -144,7 +150,7 @@
         <table class="w-full text-sm">
             <thead>
                 <tr class="border-b border-gray-100 bg-gray-50/50">
-                    <th class="px-2 sm:px-5 py-3 sm:py-4 w-10">
+                    <th class="checkbox-col hidden px-2 sm:px-5 py-3 sm:py-4 w-10 text-center align-middle">
                         <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-red-600 focus:ring-red-500">
                     </th>
                     <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Kode</th>
@@ -160,7 +166,7 @@
             <tbody class="divide-y divide-gray-50">
                 @forelse($reports as $report)
                 <tr class="hover:bg-gray-50/50 transition-colors group">
-                    <td class="px-2 sm:px-5 py-3 sm:py-4">
+                    <td class="checkbox-col hidden px-2 sm:px-5 py-3 sm:py-4 text-center align-middle">
                         <input type="checkbox" name="ids[]" value="{{ $report->id }}" class="row-checkbox rounded border-gray-300 text-red-600 focus:ring-red-500">
                     </td>
                     <td class="px-2 sm:px-5 py-3 sm:py-4">
@@ -227,6 +233,27 @@
         const rowCheckboxes = document.querySelectorAll('.row-checkbox');
         const bulkActionBar = document.getElementById('bulk-action-bar');
         const selectedCountSpan = document.getElementById('selected-count');
+        const toggleSelectModeBtn = document.getElementById('toggle-select-mode');
+        const checkboxCols = document.querySelectorAll('.checkbox-col');
+
+        if(toggleSelectModeBtn) {
+            toggleSelectModeBtn.addEventListener('click', function() {
+                checkboxCols.forEach(col => col.classList.toggle('hidden'));
+                
+                if(checkboxCols.length > 0 && checkboxCols[0].classList.contains('hidden')) {
+                    toggleSelectModeBtn.textContent = 'Pilih Laporan';
+                    toggleSelectModeBtn.classList.remove('bg-red-50', 'text-cabot-red');
+                    toggleSelectModeBtn.classList.add('bg-gray-100', 'text-gray-500');
+                    if(selectAll) selectAll.checked = false;
+                    rowCheckboxes.forEach(cb => cb.checked = false);
+                    updateBulkActions();
+                } else {
+                    toggleSelectModeBtn.textContent = 'Batal Pilih';
+                    toggleSelectModeBtn.classList.add('bg-red-50', 'text-cabot-red');
+                    toggleSelectModeBtn.classList.remove('bg-gray-100', 'text-gray-500');
+                }
+            });
+        }
 
         if(selectAll && rowCheckboxes.length > 0) {
             selectAll.addEventListener('change', function(e) {
