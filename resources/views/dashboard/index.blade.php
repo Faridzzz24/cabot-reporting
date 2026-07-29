@@ -6,49 +6,49 @@
 {{-- KPI Cards --}}
 <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
     <div class="kpi-card p-5 animate-fade-in-up" style="animation-delay: 0.05s">
-        <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
             </div>
         </div>
-        <p class="text-2xl font-bold text-gray-900 animate-count">{{ $kpi['total'] }}</p>
-        <p class="text-xs text-gray-400 mt-1">Total Laporan</p>
+        <p class="text-3xl font-extrabold text-gray-900 animate-count">{{ $kpi['total'] }}</p>
+        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">Total Laporan</p>
     </div>
 
     <div class="kpi-card p-5 animate-fade-in-up" style="animation-delay: 0.1s">
-        <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
-                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
+                <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
         </div>
-        <p class="text-2xl font-bold text-amber-600 animate-count">{{ $kpi['baru'] }}</p>
-        <p class="text-xs text-gray-400 mt-1">Belum Ditangani</p>
+        <p class="text-3xl font-extrabold text-amber-600 animate-count">{{ $kpi['baru'] }}</p>
+        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">Belum Ditangani</p>
     </div>
 
     <div class="kpi-card p-5 animate-fade-in-up" style="animation-delay: 0.15s">
-        <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center">
-                <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center">
+                <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
             </div>
         </div>
-        <p class="text-2xl font-bold text-purple-600 animate-count">{{ $kpi['dalam_proses'] }}</p>
-        <p class="text-xs text-gray-400 mt-1">Dalam Proses</p>
+        <p class="text-3xl font-extrabold text-purple-600 animate-count">{{ $kpi['dalam_proses'] }}</p>
+        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">Dalam Proses</p>
     </div>
 
     <div class="kpi-card p-5 animate-fade-in-up" style="animation-delay: 0.2s">
-        <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
-                <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center">
+                <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
         </div>
-        <p class="text-2xl font-bold text-emerald-600 animate-count">{{ $kpi['selesai'] }}</p>
-        <p class="text-xs text-gray-400 mt-1">Selesai</p>
+        <p class="text-3xl font-extrabold text-emerald-600 animate-count">{{ $kpi['selesai'] }}</p>
+        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">Selesai</p>
     </div>
 
-    <div class="kpi-card p-5 animate-fade-in-up {{ $kpi['kritis'] > 0 ? 'border-red-200 bg-red-50' : '' }}" style="animation-delay: 0.25s">
-        <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center">
-                <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+    <div class="kpi-card p-5 animate-fade-in-up {{ $kpi['kritis'] > 0 ? 'border-red-200 bg-red-50/50' : '' }}" style="animation-delay: 0.25s">
+        <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
             </div>
         </div>
         <p class="text-2xl font-bold text-red-600 animate-count">{{ $kpi['kritis'] }}</p>
@@ -66,11 +66,11 @@
             if ($maxCount == 0) $maxCount = 1;
         @endphp
         @foreach($monthlyTrend as $month)
-        <div class="flex-1 min-w-[35px] sm:min-w-0 flex flex-col items-center gap-1 sm:gap-2">
-            <span class="text-[10px] sm:text-xs font-medium text-gray-700">{{ $month['count'] }}</span>
-            <div class="w-full rounded-t-lg transition-all duration-500 hover:opacity-80"
-                 style="height: {{ $maxCount > 0 ? max(($month['count'] / $maxCount) * 100, 4) : 4 }}%; background: var(--cabot-red);"></div>
-            <span class="text-[10px] sm:text-xs text-gray-400 truncate w-full text-center">{{ $month['month'] }}</span>
+        <div class="flex-1 min-w-[35px] sm:min-w-0 flex flex-col items-center gap-1 sm:gap-2 relative group cursor-pointer">
+            <span class="text-[10px] sm:text-xs font-semibold text-gray-600 transition-colors group-hover:text-cabot-red">{{ $month['count'] }}</span>
+            <div class="w-full rounded-t-xl transition-all duration-300 opacity-90 group-hover:opacity-100 group-hover:scale-y-[1.02] origin-bottom shadow-sm"
+                 style="height: {{ $maxCount > 0 ? max(($month['count'] / $maxCount) * 100, 4) : 4 }}%; background: linear-gradient(180deg, var(--cabot-red) 0%, var(--cabot-red-dark) 100%);"></div>
+            <span class="text-[10px] sm:text-xs font-medium text-gray-400 truncate w-full text-center">{{ $month['month'] }}</span>
         </div>
         @endforeach
     </div>
@@ -149,23 +149,23 @@
     <div class="overflow-x-auto">
         <table class="w-full text-sm">
             <thead>
-                <tr class="border-b border-gray-100 bg-gray-50/50">
+                <tr class="border-b border-gray-100 bg-gray-50/70">
                     <th class="checkbox-col hidden px-2 sm:px-5 py-3 sm:py-4 w-10 text-center align-middle">
-                        <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-red-600 focus:ring-red-500">
+                        <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-red-600 focus:ring-red-500 transition-colors">
                     </th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Kode</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Jenis</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Urgensi</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
-                    <th class="text-center px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Aksi</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Kode</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Jenis</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Urgensi</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Status</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
+                    <th class="text-center px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-50">
                 @forelse($reports as $report)
-                <tr class="hover:bg-gray-50/50 transition-colors group">
+                <tr class="hover:bg-red-50/40 transition-colors group">
                     <td class="checkbox-col hidden px-2 sm:px-5 py-3 sm:py-4 text-center align-middle">
                         <input type="checkbox" name="ids[]" value="{{ $report->id }}" class="row-checkbox rounded border-gray-300 text-red-600 focus:ring-red-500">
                     </td>

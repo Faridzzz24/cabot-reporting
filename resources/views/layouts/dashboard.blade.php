@@ -32,32 +32,47 @@
         body { background: #f8f9fa; color: var(--cabot-charcoal); }
 
         .sidebar-link {
-            display: flex; align-items: center; gap: 0.75rem;
-            padding: 0.625rem 1rem; border-radius: 0.5rem;
-            color: #6b7280; font-size: 0.875rem; transition: all 0.2s ease;
+            display: flex; align-items: center; gap: 0.875rem;
+            padding: 0.75rem 1.125rem; border-radius: 0.75rem;
+            color: #6b7280; font-size: 0.875rem; font-weight: 500; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .sidebar-link:hover, .sidebar-link.active {
-            background: #fef2f2; color: var(--cabot-red);
+        .sidebar-link:hover {
+            background: linear-gradient(90deg, #fef2f2 0%, #ffffff 100%); 
+            color: var(--cabot-red);
+            transform: translateX(4px);
         }
-        .sidebar-link.active { border-left: 3px solid var(--cabot-red); }
+        .sidebar-link.active {
+            background: linear-gradient(90deg, #fef2f2 0%, #ffffff 100%); 
+            color: var(--cabot-red-dark);
+            border-left: 4px solid var(--cabot-red-dark);
+            box-shadow: 0 4px 6px -1px rgba(228, 61, 34, 0.05);
+            font-weight: 600;
+        }
 
         .form-input-dash {
-            background: #fff; border: 1px solid #d1d5db; color: var(--cabot-charcoal);
-            border-radius: 0.5rem; transition: all 0.3s ease;
+            background: #fff; border: 1px solid #e5e7eb; color: var(--cabot-charcoal);
+            border-radius: 0.75rem; transition: all 0.3s ease;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
         }
         .form-input-dash:focus {
-            border-color: var(--cabot-red); box-shadow: 0 0 0 3px rgba(210, 38, 48, 0.1); outline: none;
+            border-color: var(--cabot-red); box-shadow: 0 0 0 4px rgba(205, 23, 31, 0.12); outline: none;
         }
 
         .kpi-card {
-            background: #fff; border: 1px solid #e5e7eb; border-radius: 1rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(229, 231, 235, 0.5); border-radius: 1.25rem;
+            box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
         }
-        .kpi-card:hover { border-color: #d1d5db; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+        .kpi-card:hover { 
+            border-color: #d1d5db; 
+            transform: translateY(-4px); 
+            box-shadow: 0 12px 24px -4px rgba(0,0,0,0.08), 0 4px 12px -2px rgba(205, 23, 31, 0.04); 
+        }
 
         .glass-card {
-            background: #fff; border: 1px solid #e5e7eb; border-radius: 1rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(229, 231, 235, 0.8); border-radius: 1.25rem;
+            box-shadow: 0 4px 24px -4px rgba(0,0,0,0.04);
+            backdrop-filter: blur(12px);
         }
 
         @keyframes fadeInUp {
