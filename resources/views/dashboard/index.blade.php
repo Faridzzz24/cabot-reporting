@@ -213,7 +213,7 @@
                         <span class="text-gray-500 text-xs">{{ Str::limit($report->location, 20) }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
-                        <span class="text-[11px] font-bold tracking-wider uppercase whitespace-nowrap
+                        <span class="text-[10px] sm:text-xs whitespace-nowrap
                             {{ $report->urgency === 'rendah' ? 'text-emerald-600' : '' }}
                             {{ $report->urgency === 'sedang' ? 'text-amber-600' : '' }}
                             {{ $report->urgency === 'tinggi' ? 'text-orange-600' : '' }}
@@ -221,7 +221,7 @@
                         ">{{ $report->urgency_label }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
-                        <span class="text-[11px] font-bold tracking-wider uppercase whitespace-nowrap
+                        <span class="text-[10px] sm:text-xs whitespace-nowrap
                             {{ $report->status === 'baru' ? 'text-blue-600' : '' }}
                             {{ $report->status === 'ditinjau' ? 'text-purple-600' : '' }}
                             {{ $report->status === 'dalam_penanganan' ? 'text-indigo-600' : '' }}
