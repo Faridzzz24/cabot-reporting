@@ -58,7 +58,7 @@
 
 {{-- Monthly Trend --}}
 <div class="glass-card p-5 mb-8 animate-fade-in-up" style="animation-delay: 0.3s">
-    <h3 class="text-sm font-semibold text-gray-900 mb-4">Tren Laporan (6 Bulan Terakhir)</h3>
+    <h3 class="text-sm font-semibold text-gray-900 mb-4">Tren Laporan (Juli - Desember)</h3>
     <div class="flex items-end gap-1 sm:gap-3 h-32 overflow-x-auto hide-scrollbar">
         @php 
             $counts = array_column($monthlyTrend, 'count');

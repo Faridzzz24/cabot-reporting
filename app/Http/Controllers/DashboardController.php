@@ -50,14 +50,15 @@ class DashboardController extends Controller
             'kritis' => IncidentReport::where('urgency', 'kritis')->where('status', '!=', 'selesai')->count(),
         ];
 
-        // Monthly trend (last 6 months)
+        // Monthly trend (Juli - Desember)
         $monthlyTrend = [];
-        for ($i = 5; $i >= 0; $i--) {
-            $date = now()->subMonths($i);
+        $year = now()->year;
+        for ($month = 7; $month <= 12; $month++) {
+            $date = \Carbon\Carbon::createFromDate($year, $month, 1);
             $monthlyTrend[] = [
                 'month' => $date->translatedFormat('M Y'),
-                'count' => IncidentReport::whereYear('created_at', $date->year)
-                    ->whereMonth('created_at', $date->month)
+                'count' => IncidentReport::whereYear('created_at', $year)
+                    ->whereMonth('created_at', $month)
                     ->count(),
             ];
         }
