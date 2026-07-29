@@ -187,13 +187,13 @@
                     <th class="checkbox-col hidden px-2 sm:px-5 py-3 sm:py-4 w-10 text-center align-middle">
                         <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-red-600 focus:ring-red-500 transition-colors">
                     </th>
-                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Kode</th>
-                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Jenis</th>
-                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Kode</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Jenis</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
                     <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Urgensi</th>
                     <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Status</th>
-                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
-                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
                     <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
@@ -203,36 +203,38 @@
                     <td class="checkbox-col hidden px-4 sm:px-6 py-3 sm:py-4 text-center align-middle">
                         <input type="checkbox" name="ids[]" value="{{ $report->id }}" class="row-checkbox rounded border-gray-300 text-red-600 focus:ring-red-500">
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
                         <span class="font-mono text-[10px] sm:text-xs font-semibold" style="color: var(--cabot-red);">{{ $report->tracking_code }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
                         <span class="text-gray-700 text-[10px] sm:text-xs">{{ $report->incident_type_label }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 hidden sm:table-cell">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center hidden sm:table-cell">
                         <span class="text-gray-500 text-xs">{{ Str::limit($report->location, 20) }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
-                        <span class="px-2 sm:px-3 py-1 rounded-full text-[10px] font-bold tracking-wide shadow-sm border whitespace-nowrap
-                            {{ $report->urgency === 'rendah' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : '' }}
-                            {{ $report->urgency === 'sedang' ? 'bg-amber-50 text-amber-700 border-amber-200' : '' }}
-                            {{ $report->urgency === 'tinggi' ? 'bg-orange-50 text-orange-700 border-orange-200' : '' }}
-                            {{ $report->urgency === 'kritis' ? 'bg-red-50 text-red-700 border-red-200' : '' }}
+                        <span class="text-[11px] font-bold tracking-wider uppercase whitespace-nowrap
+                            {{ $report->urgency === 'rendah' ? 'text-emerald-600' : '' }}
+                            {{ $report->urgency === 'sedang' ? 'text-amber-600' : '' }}
+                            {{ $report->urgency === 'tinggi' ? 'text-orange-600' : '' }}
+                            {{ $report->urgency === 'kritis' ? 'text-red-600' : '' }}
                         ">{{ $report->urgency_label }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
-                        <span class="px-2 sm:px-3 py-1 rounded-full text-[10px] font-bold tracking-wide shadow-sm border whitespace-nowrap
-                            {{ $report->status === 'baru' ? 'bg-blue-50 text-blue-700 border-blue-200' : '' }}
-                            {{ $report->status === 'ditinjau' ? 'bg-purple-50 text-purple-700 border-purple-200' : '' }}
-                            {{ $report->status === 'dalam_penanganan' ? 'bg-indigo-50 text-indigo-700 border-indigo-200' : '' }}
-                            {{ $report->status === 'selesai' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : '' }}
-                            {{ $report->status === 'ditolak' ? 'bg-red-50 text-red-700 border-red-200' : '' }}
+                        <span class="text-[11px] font-bold tracking-wider uppercase whitespace-nowrap
+                            {{ $report->status === 'baru' ? 'text-blue-600' : '' }}
+                            {{ $report->status === 'ditinjau' ? 'text-purple-600' : '' }}
+                            {{ $report->status === 'dalam_penanganan' ? 'text-indigo-600' : '' }}
+                            {{ $report->status === 'selesai' ? 'text-emerald-600' : '' }}
+                            {{ $report->status === 'ditolak' ? 'text-red-600' : '' }}
                         ">{{ $report->status_label }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 hidden md:table-cell">
-                        <span class="text-xs text-gray-700">{{ $report->reporter_name }}</span>
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center hidden md:table-cell">
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="text-gray-600 text-xs font-medium">{{ $report->reporter_name }}</span>
+                        </div>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 hidden lg:table-cell align-middle">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center hidden lg:table-cell align-middle">
                         <span class="text-xs text-gray-400">{{ $report->created_at->format('d/m/Y') }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center align-middle">
