@@ -45,7 +45,7 @@
         <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">{{ __('Selesai') }}</p>
     </div>
 
-    <div class="kpi-card p-5 animate-fade-in-up {{ $kpi['kritis'] > 0 ? 'border-red-200 bg-red-50/50' : '' }}" style="animation-delay: 0.25s">
+    <div class="kpi-card p-5 animate-fade-in-up col-span-2 lg:col-span-1 {{ $kpi['kritis'] > 0 ? 'border-red-200 bg-red-50/50' : '' }}" style="animation-delay: 0.25s">
         <div class="flex items-center gap-3 mb-4">
             <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
                 <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
@@ -111,15 +111,15 @@
 </div>
 
 {{-- Filters --}}
-<div class="glass-card p-4 mb-6 animate-fade-in-up" style="animation-delay: 0.35s">
-    <form method="GET" action="{{ route('dashboard') }}" class="flex flex-wrap gap-3 items-end">
-        <div class="flex-1 min-w-[200px]">
+<div class="glass-card p-4 sm:p-5 mb-6 animate-fade-in-up" style="animation-delay: 0.35s">
+    <form method="GET" action="{{ route('dashboard') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+        <div class="sm:col-span-2 lg:col-span-1">
             <label class="text-xs text-gray-400 mb-1 block">{{ __('Cari') }}</label>
             <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('Kode tracking, deskripsi, lokasi...') }}" class="form-input-dash w-full px-3 py-2 text-sm">
         </div>
         <div>
             <label class="text-xs text-gray-400 mb-1 block">{{ __('Jenis') }}</label>
-            <select name="type" class="form-input-dash px-3 py-2 text-sm">
+            <select name="type" class="form-input-dash w-full px-3 py-2 text-sm">
                 <option value="">{{ __('Semua') }}</option>
                 <option value="near_miss" {{ request('type') === 'near_miss' ? 'selected' : '' }}>{{ __('Near Miss (Hampir terjadi kecelakaan)') }}</option>
                 <option value="unsafe_act" {{ request('type') === 'unsafe_act' ? 'selected' : '' }}>{{ __('Unsafe Act (Perilaku tidak aman)') }}</option>
@@ -133,7 +133,7 @@
         </div>
         <div>
             <label class="text-xs text-gray-400 mb-1 block">{{ __('Urgensi') }}</label>
-            <select name="urgency" class="form-input-dash px-3 py-2 text-sm">
+            <select name="urgency" class="form-input-dash w-full px-3 py-2 text-sm">
                 <option value="">{{ __('Semua') }}</option>
                 <option value="rendah" {{ request('urgency') === 'rendah' ? 'selected' : '' }}>{{ __('Rendah') }}</option>
                 <option value="sedang" {{ request('urgency') === 'sedang' ? 'selected' : '' }}>{{ __('Sedang') }}</option>
@@ -143,7 +143,7 @@
         </div>
         <div>
             <label class="text-xs text-gray-400 mb-1 block">Status</label>
-            <select name="status" class="form-input-dash px-3 py-2 text-sm">
+            <select name="status" class="form-input-dash w-full px-3 py-2 text-sm">
                 <option value="">Semua</option>
                 <option value="baru" {{ request('status') === 'baru' ? 'selected' : '' }}>Baru</option>
                 <option value="ditinjau" {{ request('status') === 'ditinjau' ? 'selected' : '' }}>Ditinjau</option>
@@ -152,14 +152,16 @@
                 <option value="ditolak" {{ request('status') === 'ditolak' ? 'selected' : '' }}>Ditolak</option>
             </select>
         </div>
-        <button type="submit" class="px-4 py-2 rounded-lg text-white text-sm font-medium transition-all duration-300" style="background: var(--cabot-red);">
-            Filter
-        </button>
-        @if(request()->hasAny(['search', 'type', 'urgency', 'status']))
-        <a href="{{ route('dashboard') }}" class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 text-sm transition-all duration-300">
-            Reset
-        </a>
-        @endif
+        <div class="flex gap-2 sm:col-span-2 lg:col-span-1">
+            <button type="submit" class="flex-1 px-4 py-2 rounded-lg text-white text-sm font-medium transition-all duration-300 text-center" style="background: var(--cabot-red);">
+                Filter
+            </button>
+            @if(request()->hasAny(['search', 'type', 'urgency', 'status']))
+            <a href="{{ route('dashboard') }}" class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 text-sm font-medium transition-all duration-300 text-center">
+                Reset
+            </a>
+            @endif
+        </div>
     </form>
 </div>
 
@@ -187,14 +189,14 @@
                     <th class="checkbox-col hidden px-2 sm:px-5 py-3 sm:py-4 w-10 text-center align-middle">
                         <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-red-600 focus:ring-red-500 transition-colors">
                     </th>
-                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Kode</th>
-                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Jenis</th>
-                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
-                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Urgensi</th>
-                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Status</th>
-                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
-                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
-                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Aksi</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider whitespace-nowrap">Kode</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider whitespace-nowrap">Jenis</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider whitespace-nowrap">Lokasi</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider whitespace-nowrap">Urgensi</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider whitespace-nowrap">Status</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider whitespace-nowrap">Pelapor</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider whitespace-nowrap">Tanggal</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider whitespace-nowrap">Aksi</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-50">
@@ -203,16 +205,16 @@
                     <td class="checkbox-col hidden px-4 sm:px-6 py-3 sm:py-4 text-center align-middle">
                         <input type="checkbox" name="ids[]" value="{{ $report->id }}" class="row-checkbox rounded border-gray-300 text-red-600 focus:ring-red-500">
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center whitespace-nowrap">
                         <span class="font-mono text-[10px] sm:text-xs font-medium" style="color: var(--cabot-red);">{{ $report->tracking_code }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center whitespace-nowrap">
                         <span class="text-gray-700 text-[10px] sm:text-xs font-medium">{{ $report->incident_type_label }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center hidden sm:table-cell">
-                        <span class="text-gray-700 text-[10px] sm:text-xs font-medium">{{ Str::limit($report->location, 20) }}</span>
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center whitespace-nowrap">
+                        <span class="text-gray-700 text-[10px] sm:text-xs font-medium" title="{{ $report->location }}">{{ Str::limit($report->location, 20) }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center whitespace-nowrap">
                         <span class="text-[10px] sm:text-xs font-medium whitespace-nowrap
                             {{ $report->urgency === 'rendah' ? 'text-emerald-600' : '' }}
                             {{ $report->urgency === 'sedang' ? 'text-amber-600' : '' }}
@@ -220,7 +222,7 @@
                             {{ $report->urgency === 'kritis' ? 'text-red-700' : '' }}
                         ">{{ $report->urgency_label }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center whitespace-nowrap">
                         <span class="text-[10px] sm:text-xs font-medium whitespace-nowrap
                             {{ $report->status === 'baru' ? 'text-blue-600' : '' }}
                             {{ $report->status === 'ditinjau' ? 'text-purple-600' : '' }}
@@ -229,15 +231,15 @@
                             {{ $report->status === 'ditolak' ? 'text-red-600' : '' }}
                         ">{{ $report->status_label }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center hidden md:table-cell">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center whitespace-nowrap">
                         <div class="flex items-center justify-center gap-2">
                             <span class="text-gray-700 text-[10px] sm:text-xs font-medium">{{ $report->reporter_name }}</span>
                         </div>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center hidden lg:table-cell align-middle">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center align-middle whitespace-nowrap">
                         <span class="text-gray-700 text-[10px] sm:text-xs font-medium">{{ $report->created_at->format('d/m/Y') }}</span>
                     </td>
-                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center align-middle">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center align-middle whitespace-nowrap">
                         <a href="{{ route('reports.show', $report->id) }}" class="inline-block text-[10px] sm:text-xs font-medium whitespace-nowrap hover:opacity-80 transition-opacity" style="color: var(--cabot-red);">
                             Lihat →
                         </a>
