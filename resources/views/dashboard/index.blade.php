@@ -12,7 +12,7 @@
             </div>
         </div>
         <p class="text-3xl font-medium text-gray-900 animate-count">{{ $kpi['total'] }}</p>
-        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">Total Laporan</p>
+        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">{{ __('Total Laporan') }}</p>
     </div>
 
     <div class="kpi-card p-5 animate-fade-in-up" style="animation-delay: 0.1s">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <p class="text-3xl font-medium text-amber-600 animate-count">{{ $kpi['baru'] }}</p>
-        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">Belum Ditangani</p>
+        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">{{ __('Belum Ditangani') }}</p>
     </div>
 
     <div class="kpi-card p-5 animate-fade-in-up" style="animation-delay: 0.15s">
@@ -32,7 +32,7 @@
             </div>
         </div>
         <p class="text-3xl font-medium text-purple-600 animate-count">{{ $kpi['dalam_proses'] }}</p>
-        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">Dalam Proses</p>
+        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">{{ __('Dalam Proses') }}</p>
     </div>
 
     <div class="kpi-card p-5 animate-fade-in-up" style="animation-delay: 0.2s">
@@ -42,7 +42,7 @@
             </div>
         </div>
         <p class="text-3xl font-medium text-emerald-600 animate-count">{{ $kpi['selesai'] }}</p>
-        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">Selesai</p>
+        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">{{ __('Selesai') }}</p>
     </div>
 
     <div class="kpi-card p-5 animate-fade-in-up {{ $kpi['kritis'] > 0 ? 'border-red-200 bg-red-50/50' : '' }}" style="animation-delay: 0.25s">
@@ -52,7 +52,7 @@
             </div>
         </div>
         <p class="text-3xl font-medium text-red-600 animate-count">{{ $kpi['kritis'] }}</p>
-        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">Kritis Aktif</p>
+        <p class="text-xs font-medium text-gray-500 mt-1 uppercase tracking-wide">{{ __('Kritis Aktif') }}</p>
     </div>
 </div>
 

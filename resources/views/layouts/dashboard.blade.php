@@ -174,9 +174,17 @@
                     <button onclick="toggleSidebar()" class="text-gray-500 hover:text-gray-900 transition-colors">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
-                    <h1 class="text-lg font-semibold text-gray-900">@yield('page-title', 'Dashboard')</h1>
+                    <h1 class="text-lg font-semibold text-gray-900">@yield('page-title', __('Dashboard'))</h1>
                 </div>
-                <span class="text-xs text-gray-400">{{ now()->translatedFormat('d M Y, H:i') }}</span>
+                <div class="flex items-center gap-4">
+                    <!-- Language Switcher -->
+                    <div class="flex items-center gap-2 mr-2 border-r border-gray-200 pr-4">
+                        <a href="{{ route('lang.switch', 'id') }}" class="text-xs font-semibold hover:text-red-600 {{ session('locale', 'id') == 'id' ? 'text-red-600' : 'text-gray-400' }}">ID</a>
+                        <span class="text-gray-300">|</span>
+                        <a href="{{ route('lang.switch', 'en') }}" class="text-xs font-semibold hover:text-red-600 {{ session('locale') == 'en' ? 'text-red-600' : 'text-gray-400' }}">EN</a>
+                    </div>
+                    <span class="hidden sm:inline text-xs text-gray-400">{{ now()->translatedFormat('d M Y, H:i') }}</span>
+                </div>
             </header>
 
             <main class="flex-1 p-4 sm:p-6 overflow-auto">

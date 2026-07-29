@@ -7,14 +7,41 @@
     <div class="text-center mb-10">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-100 text-sm font-medium mb-6" style="color: var(--cabot-red);">
             <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-            Sistem Pelaporan Aktif 24/7
+            {{ __('Sistem Pelaporan Aktif 24/7') }}
         </div>
         <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
-            Laporkan <span style="color: var(--cabot-red);">Insiden K3</span>
+            {{ __('Laporkan') }} <span style="color: var(--cabot-red);">{{ __('Insiden K3') }}</span>
         </h1>
         <p class="text-gray-500 max-w-xl mx-auto text-sm sm:text-base">
-            Keselamatan adalah tanggung jawab bersama. Laporkan segala kejadian, kondisi tidak aman, atau near miss di area kerja PT Cabot.
+            {{ __('Keselamatan adalah tanggung jawab bersama. Laporkan segala kejadian, kondisi tidak aman, atau near miss di area kerja PT Cabot.') }}
         </p>
+    </div>
+
+    {{-- Emergency Hotline --}}
+    <div class="mb-8 p-5 bg-red-50 border border-red-200 rounded-xl flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+        <div class="flex items-start gap-4">
+            <div class="p-3 bg-red-100 rounded-lg text-red-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-red-800">{{ __('Nomor Darurat (Hotline)') }}</h3>
+                <p class="text-sm text-red-600 mt-1 max-w-md">{{ __('Atau hubungi nomor di bawah ini jika keadaan sangat darurat dan butuh penanganan segera.') }}</p>
+            </div>
+        </div>
+        <div class="flex flex-col gap-2 w-full sm:w-auto shrink-0">
+            <a href="tel:113" class="inline-flex justify-between items-center px-4 py-2 bg-white rounded-lg border border-red-200 text-sm font-semibold text-red-700 hover:bg-red-50 transition-colors">
+                <span>{{ __('Pemadam Kebakaran') }}</span>
+                <span class="ml-4 font-bold">113</span>
+            </a>
+            <a href="tel:118" class="inline-flex justify-between items-center px-4 py-2 bg-white rounded-lg border border-red-200 text-sm font-semibold text-red-700 hover:bg-red-50 transition-colors">
+                <span>{{ __('Klinik / Medis') }}</span>
+                <span class="ml-4 font-bold">118</span>
+            </a>
+            <a href="tel:112" class="inline-flex justify-between items-center px-4 py-2 bg-white rounded-lg border border-red-200 text-sm font-semibold text-red-700 hover:bg-red-50 transition-colors">
+                <span>{{ __('Keamanan (Security)') }}</span>
+                <span class="ml-4 font-bold">112</span>
+            </a>
+        </div>
     </div>
 
     {{-- Form --}}
@@ -203,9 +230,9 @@
         <div class="pt-2">
             <button type="submit" class="btn-primary w-full py-4 text-sm tracking-wide">
                 <svg class="w-5 h-5 inline mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-                Kirim Laporan
+                {{ __('Kirim Laporan Insiden') }}
             </button>
-            <p class="text-xs text-center text-gray-400 mt-3">Laporan Anda akan langsung diteruskan ke tim SHE PT Cabot.</p>
+            <p class="text-xs text-center text-gray-400 mt-3">{{ __('Laporan Anda akan langsung diteruskan ke tim SHE PT Cabot.') }}</p>
         </div>
     </form>
 </div>

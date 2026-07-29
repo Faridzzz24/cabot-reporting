@@ -14,6 +14,14 @@ Route::get('/track', [ReportController::class, 'track'])->name('report.track');
 Route::post('/track', [ReportController::class, 'trackResult'])->name('report.track.result');
 Route::get('/photo/{id}', [DashboardController::class, 'servePhoto'])->name('photo.serve');
 
+// ── Lang Switch ───────────────────────────────────────────
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'id'])) {
+        session()->put('locale', $locale);
+    }
+    return back();
+})->name('lang.switch');
+
 // ── Auth ────────────────────────────────────────────────
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
