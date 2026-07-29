@@ -1,19 +1,36 @@
 <!DOCTYPE html>
+@if(isset($format) && $format === 'word')
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+@else
 <html>
+@endif
 <head>
     <meta charset="utf-8">
     <title>Rekap Laporan Insiden K3</title>
     <style>
+        @if(isset($format) && $format === 'word')
+        @page WordSection1 {
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-header: h1;
+        }
+        div.WordSection1 { page: WordSection1; }
+        p.MsoHeader { margin: 0; }
+        @else
         @page {
             size: A4;
             margin: 0; /* Remove browser default headers and footers */
         }
+        @endif
+
         body {
             font-family: Arial, sans-serif;
             font-size: 11px;
             color: #333;
+            @if(isset($format) && $format !== 'word')
             padding: 20mm; /* Padding inside the document to replace page margin */
             padding-top: 15mm;
+            @endif
         }
         .header {
             text-align: center;
@@ -60,6 +77,12 @@
 </head>
 <body>
 
+@if(isset($format) && $format === 'word')
+<div class="WordSection1">
+@endif
+
+    @if(!isset($format) || $format !== 'word')
+    <!-- Web/PDF Header -->
     <table style="width: 100%; border: none; margin-bottom: 20px; font-size: 11px; color: #666;">
         <tr>
             <td style="width: 33%; text-align: left; border: none; padding: 0;">
@@ -73,6 +96,7 @@
             </td>
         </tr>
     </table>
+    @endif
 
     <div class="header">
         <h2>REKAPITULASI LAPORAN INSIDEN K3</h2>
@@ -112,6 +136,31 @@
             @endforeach
         </tbody>
     </table>
+
+@if(isset($format) && $format === 'word')
+</div>
+
+<!-- Word Header Definition -->
+<div style="mso-element:header" id="h1">
+    <table style="width: 100%; border: none; margin-bottom: 20px; font-size: 11px; color: #666;">
+        <tr>
+            <td style="width: 33%; text-align: left; border: none; padding: 0;">
+                @php
+                    $logoPath = public_path('img/cabot-logo.png');
+                    $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(file_get_contents($logoPath)) : asset('img/cabot-logo.png');
+                @endphp
+                <img src="{{ $logoBase64 }}" alt="Logo Cabot" style="height: 35px;">
+            </td>
+            <td style="width: 34%; text-align: center; border: none; padding: 0;">
+                {{ now()->format('d/m/Y, H:i') }}
+            </td>
+            <td style="width: 33%; text-align: right; border: none; padding: 0;">
+                Rekap Laporan Insiden K3
+            </td>
+        </tr>
+    </table>
+</div>
+@endif
 
     @if(isset($format) && $format === 'pdf')
     <script>
