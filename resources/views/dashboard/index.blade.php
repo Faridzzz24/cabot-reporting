@@ -67,27 +67,30 @@
                 {{ request('trend_year', now()->year) }})
             </span>
         </h3>
-        <form method="GET" action="{{ route('dashboard') }}" class="flex items-center gap-2">
+        <form method="GET" action="{{ route('dashboard') }}" class="flex flex-wrap items-center gap-2">
             @foreach(request()->except(['trend_year', 'trend_start', 'trend_end']) as $key => $value)
                 <input type="hidden" name="{{ $key }}" value="{{ $value }}">
             @endforeach
-            <select name="trend_start" class="form-input-dash px-2 py-1 text-xs" onchange="this.form.submit()">
+            <select name="trend_start" class="form-input-dash px-2 py-1 text-xs">
                 @for($m = 1; $m <= 12; $m++)
                     <option value="{{ $m }}" {{ request('trend_start', 7) == $m ? 'selected' : '' }}>{{ \Carbon\Carbon::create()->month($m)->translatedFormat('M') }}</option>
                 @endfor
             </select>
             <span class="text-gray-400 text-xs">-</span>
-            <select name="trend_end" class="form-input-dash px-2 py-1 text-xs" onchange="this.form.submit()">
+            <select name="trend_end" class="form-input-dash px-2 py-1 text-xs">
                 @for($m = 1; $m <= 12; $m++)
                     <option value="{{ $m }}" {{ request('trend_end', 12) == $m ? 'selected' : '' }}>{{ \Carbon\Carbon::create()->month($m)->translatedFormat('M') }}</option>
                 @endfor
             </select>
-            <select name="trend_year" class="form-input-dash px-2 py-1 text-xs ml-1" onchange="this.form.submit()">
+            <select name="trend_year" class="form-input-dash px-2 py-1 text-xs ml-1">
                 @php $currentYear = now()->year; @endphp
                 @for($y = $currentYear - 2; $y <= $currentYear + 1; $y++)
                     <option value="{{ $y }}" {{ request('trend_year', $currentYear) == $y ? 'selected' : '' }}>{{ $y }}</option>
                 @endfor
             </select>
+            <button type="submit" class="px-3 py-1 rounded-md text-white text-xs font-medium transition-all ml-1" style="background: var(--cabot-red); hover:opacity-90;">
+                Terapkan
+            </button>
         </form>
     </div>
     <div class="flex items-end gap-1 sm:gap-3 h-32 overflow-x-auto hide-scrollbar">
