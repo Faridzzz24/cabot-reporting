@@ -165,16 +165,27 @@ DATA INSIDEN
 ═══════════════════════════════════
 
 INSTRUKSI:
-1. Identifikasi 3-5 kemungkinan akar masalah berdasarkan analisis 5-Why
-2. Analisis menggunakan 4 kategori Fishbone: Manusia, Proses, Peralatan, Lingkungan
-3. Berikan 3-5 rekomendasi tindakan korektif yang spesifik dan actionable
-4. Berikan ringkasan singkat analisis
+1. Lakukan penjabaran analisis 5-Why (5 pertanyaan "Mengapa" yang saling berkaitan) beserta jawabannya untuk mencari akar masalah
+2. Identifikasi 3-5 kemungkinan akar masalah berdasarkan analisis tersebut
+3. Analisis menggunakan 4 kategori Fishbone: Manusia, Proses, Peralatan, Lingkungan
+4. Berikan 3-5 rekomendasi tindakan korektif yang spesifik dan actionable
+5. Berikan ringkasan singkat analisis
 
 Balas HANYA dengan JSON valid, format:
 {
     "ringkasan": "Paragraf singkat ringkasan analisis RCA",
+    "analisis_5_why": [
+        {
+            "pertanyaan": "Mengapa (kejadian utama)?",
+            "jawaban": "Karena..."
+        },
+        {
+            "pertanyaan": "Mengapa (jawaban sebelumnya)?",
+            "jawaban": "Karena..."
+        }
+    ],
     "akar_masalah": [
-        "Poin akar masalah 1 (hasil analisis 5-Why)",
+        "Poin akar masalah 1 (dari kesimpulan 5-Why)",
         "Poin akar masalah 2",
         "Poin akar masalah 3"
     ],
@@ -199,7 +210,7 @@ PROMPT;
     private function validateRcaStructure(array $data): bool
     {
         // Must have these top-level keys
-        $requiredKeys = ['akar_masalah', 'kategori', 'rekomendasi'];
+        $requiredKeys = ['analisis_5_why', 'akar_masalah', 'kategori', 'rekomendasi'];
         foreach ($requiredKeys as $key) {
             if (!isset($data[$key])) {
                 return false;

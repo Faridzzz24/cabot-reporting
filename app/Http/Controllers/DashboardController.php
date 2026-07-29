@@ -300,6 +300,9 @@ class DashboardController extends Controller
     {
         $validated = $request->validate([
             'rca_data' => ['required', 'array'],
+            'rca_data.analisis_5_why' => ['required', 'array', 'min:1'],
+            'rca_data.analisis_5_why.*.pertanyaan' => ['required', 'string'],
+            'rca_data.analisis_5_why.*.jawaban' => ['required', 'string'],
             'rca_data.akar_masalah' => ['required', 'array', 'min:1'],
             'rca_data.kategori' => ['required', 'array'],
             'rca_data.kategori.manusia' => ['required', 'string'],

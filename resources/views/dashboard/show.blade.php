@@ -119,8 +119,23 @@
                                 <p id="rca-ringkasan" class="text-sm text-gray-700 leading-relaxed bg-gray-50 rounded-xl p-4">{{ $report->rca_data['ringkasan'] ?? '' }}</p>
                             </div>
 
-                            {{-- Akar Masalah --}}
+                            {{-- Analisis 5-Why --}}
                             <div>
+                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Analisis 5-Why</p>
+                                <div id="rca-5why" class="space-y-3">
+                                    @if($report->rca_data && isset($report->rca_data['analisis_5_why']))
+                                        @foreach($report->rca_data['analisis_5_why'] as $idx => $item)
+                                        <div class="p-3 rounded-xl bg-blue-50/50 border border-blue-100/50">
+                                            <p class="text-sm font-semibold text-blue-800 mb-1">Q{{ $idx + 1 }}: {{ $item['pertanyaan'] }}</p>
+                                            <p class="text-sm text-gray-700">A: {{ $item['jawaban'] }}</p>
+                                        </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+
+                            {{-- Akar Masalah --}}
+                            <div class="mt-5">
                                 <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Kemungkinan Akar Masalah</p>
                                 <div id="rca-akar-masalah" class="space-y-2">
                                     @if($report->rca_data && isset($report->rca_data['akar_masalah']))
@@ -434,6 +449,21 @@ function renderRca(data) {
         ringkasanSection.classList.remove('hidden');
     } else {
         ringkasanSection.classList.add('hidden');
+    }
+
+    // 5-Why
+    const whyEl = document.getElementById('rca-5why');
+    if (whyEl) {
+        whyEl.innerHTML = '';
+        if (data.analisis_5_why && data.analisis_5_why.length) {
+            data.analisis_5_why.forEach((item, idx) => {
+                whyEl.innerHTML += `
+                    <div class="p-3 rounded-xl bg-blue-50/50 border border-blue-100/50 animate-fade-in-up" style="animation-delay: ${idx * 0.05}s">
+                        <p class="text-sm font-semibold text-blue-800 mb-1">Q${idx + 1}: ${escapeHtml(item.pertanyaan)}</p>
+                        <p class="text-sm text-gray-700">A: ${escapeHtml(item.jawaban)}</p>
+                    </div>`;
+            });
+        }
     }
 
     // Akar masalah
