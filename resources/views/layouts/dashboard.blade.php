@@ -177,13 +177,12 @@
                     <h1 class="text-lg font-semibold text-gray-900">@yield('page-title', __('Dashboard'))</h1>
                 </div>
                 <div class="flex items-center gap-4">
+                    <span class="hidden sm:inline text-xs text-gray-400">{{ now()->translatedFormat('d M Y, H:i') }}</span>
                     <!-- Language Switcher -->
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-3">
                         <a href="{{ route('lang.switch', 'id') }}" class="text-xs font-semibold hover:text-red-600 {{ session('locale', 'id') == 'id' ? 'text-red-600' : 'text-gray-400' }}">ID</a>
-                        <span class="text-gray-300">|</span>
                         <a href="{{ route('lang.switch', 'en') }}" class="text-xs font-semibold hover:text-red-600 {{ session('locale') == 'en' ? 'text-red-600' : 'text-gray-400' }}">EN</a>
                     </div>
-                    <span class="hidden sm:inline text-xs text-gray-400">{{ now()->translatedFormat('d M Y, H:i') }}</span>
                 </div>
             </header>
 

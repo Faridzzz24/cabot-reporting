@@ -168,20 +168,19 @@
                     </div>
                 </a>
                 <div class="flex items-center gap-2 sm:gap-3">
-                    <!-- Language Switcher -->
-                    <div class="flex items-center gap-2 mr-2">
-                        <a href="{{ route('lang.switch', 'id') }}" class="text-xs font-semibold hover:text-red-600 {{ session('locale', 'id') == 'id' ? 'text-red-600' : 'text-gray-400' }}">ID</a>
-                        <span class="text-gray-300">|</span>
-                        <a href="{{ route('lang.switch', 'en') }}" class="text-xs font-semibold hover:text-red-600 {{ session('locale') == 'en' ? 'text-red-600' : 'text-gray-400' }}">EN</a>
-                    </div>
-                    
                     <a href="{{ route('report.track') }}" class="text-sm text-gray-500 hover:text-red-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50">
                         <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                         <span class="hidden sm:inline">{{ __('Lacak Laporan') }}</span>
                     </a>
                     <a href="{{ route('login') }}" class="text-sm bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-lg transition-all duration-300">
-                        Login
+                        {{ __('Login') }}
                     </a>
+
+                    <!-- Language Switcher -->
+                    <div class="flex items-center gap-3 ml-2">
+                        <a href="{{ route('lang.switch', 'id') }}" class="text-xs font-semibold hover:text-red-600 {{ session('locale', 'id') == 'id' ? 'text-red-600' : 'text-gray-400' }}">ID</a>
+                        <a href="{{ route('lang.switch', 'en') }}" class="text-xs font-semibold hover:text-red-600 {{ session('locale') == 'en' ? 'text-red-600' : 'text-gray-400' }}">EN</a>
+                    </div>
                 </div>
             </div>
         </div>
