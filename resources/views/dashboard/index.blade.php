@@ -141,7 +141,7 @@
         @csrf
         @method('DELETE')
         
-        <div id="bulk-action-bar" class="hidden px-5 py-3 bg-red-50 border-b border-red-100 flex justify-between items-center">
+        <div id="bulk-action-bar" class="hidden px-5 py-3 bg-red-50 border-b border-red-100 justify-between items-center">
             <span class="text-sm text-red-800 font-medium"><span id="selected-count">0</span> laporan terpilih</span>
             <button type="submit" class="px-3 py-1.5 bg-red-600 text-white text-xs font-semibold rounded-md hover:bg-red-700 transition-colors" onclick="return confirm('Apakah Anda yakin ingin menghapus semua laporan yang dipilih secara permanen?')">Hapus Terpilih</button>
         </div>
@@ -267,13 +267,15 @@
         }
 
         function updateBulkActions() {
-            const checkedCount = Array.from(rowCheckboxes).filter(cb => cb.checked).length;
+            const checkedCount = document.querySelectorAll('.row-checkbox:checked').length;
             selectedCountSpan.textContent = checkedCount;
             
             if (checkedCount > 0) {
                 bulkActionBar.classList.remove('hidden');
+                bulkActionBar.classList.add('flex');
             } else {
                 bulkActionBar.classList.add('hidden');
+                bulkActionBar.classList.remove('flex');
                 if(selectAll) selectAll.checked = false;
             }
         }
