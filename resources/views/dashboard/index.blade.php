@@ -63,7 +63,7 @@
             {{ __('Tren Laporan') }} 
             <span class="text-gray-500 font-normal">
                 ({{ \Carbon\Carbon::create()->month(request('trend_start', 1))->translatedFormat('F') }} - 
-                {{ \Carbon\Carbon::create()->month(request('trend_end', 12))->translatedFormat('F') }} 
+                {{ \Carbon\Carbon::create()->month(request('trend_end', 6))->translatedFormat('F') }} 
                 {{ request('trend_year', now()->year) }})
             </span>
         </h3>
@@ -79,7 +79,7 @@
             <span class="text-gray-400 text-xs">-</span>
             <select name="trend_end" class="form-input-dash px-2 py-1 text-xs">
                 @for($m = 1; $m <= 12; $m++)
-                    <option value="{{ $m }}" {{ request('trend_end', 12) == $m ? 'selected' : '' }}>{{ \Carbon\Carbon::create()->month($m)->translatedFormat('M') }}</option>
+                    <option value="{{ $m }}" {{ request('trend_end', 6) == $m ? 'selected' : '' }}>{{ \Carbon\Carbon::create()->month($m)->translatedFormat('M') }}</option>
                 @endfor
             </select>
             <select name="trend_year" class="form-input-dash px-2 py-1 text-xs ml-1">

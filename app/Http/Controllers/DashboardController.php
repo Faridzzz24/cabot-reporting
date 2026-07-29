@@ -53,7 +53,7 @@ class DashboardController extends Controller
         // Monthly trend (Customizable)
         $trendYear = $request->input('trend_year', now()->year);
         $trendStart = $request->input('trend_start', 1);
-        $trendEnd = $request->input('trend_end', 12);
+        $trendEnd = $request->input('trend_end', 6);
 
         if ($trendStart > $trendEnd) {
             $temp = $trendStart;
