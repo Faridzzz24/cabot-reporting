@@ -31,7 +31,7 @@ class UserController extends Controller
 
         User::create($validated);
 
-        return back()->with('success', "User {$validated['name']} berhasil ditambahkan.");
+        return back()->with('success', __('User') . " {$validated['name']} " . __('berhasil ditambahkan.'));
     }
 
     /**
@@ -56,7 +56,7 @@ class UserController extends Controller
             $user->update(['password' => $validated['password']]);
         }
 
-        return back()->with('success', "User {$user->name} berhasil diperbarui.");
+        return back()->with('success', __('User') . " {$user->name} " . __('berhasil diperbarui.'));
     }
 
     /**
@@ -65,10 +65,10 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         if ($user->id === auth()->id()) {
-            return back()->withErrors(['error' => 'Tidak dapat menghapus akun sendiri.']);
+            return back()->withErrors(['error' => __('Tidak dapat menghapus akun sendiri.')]);
         }
 
         $user->delete();
-        return back()->with('success', 'User berhasil dihapus.');
+        return back()->with('success', __('User berhasil dihapus.'));
     }
 }
