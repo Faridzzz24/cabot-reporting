@@ -58,7 +58,38 @@
 
 {{-- Monthly Trend --}}
 <div class="glass-card p-5 mb-8 animate-fade-in-up" style="animation-delay: 0.3s">
-    <h3 class="text-sm font-semibold text-gray-900 mb-4">Tren Laporan (Juli - Desember)</h3>
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
+        <h3 class="text-sm font-semibold text-gray-900">
+            Tren Laporan 
+            <span class="text-gray-500 font-normal">
+                ({{ \Carbon\Carbon::create()->month(request('trend_start', 7))->translatedFormat('F') }} - 
+                {{ \Carbon\Carbon::create()->month(request('trend_end', 12))->translatedFormat('F') }} 
+                {{ request('trend_year', now()->year) }})
+            </span>
+        </h3>
+        <form method="GET" action="{{ route('dashboard') }}" class="flex items-center gap-2">
+            @foreach(request()->except(['trend_year', 'trend_start', 'trend_end']) as $key => $value)
+                <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+            @endforeach
+            <select name="trend_start" class="form-input-dash px-2 py-1 text-xs" onchange="this.form.submit()">
+                @for($m = 1; $m <= 12; $m++)
+                    <option value="{{ $m }}" {{ request('trend_start', 7) == $m ? 'selected' : '' }}>{{ \Carbon\Carbon::create()->month($m)->translatedFormat('M') }}</option>
+                @endfor
+            </select>
+            <span class="text-gray-400 text-xs">-</span>
+            <select name="trend_end" class="form-input-dash px-2 py-1 text-xs" onchange="this.form.submit()">
+                @for($m = 1; $m <= 12; $m++)
+                    <option value="{{ $m }}" {{ request('trend_end', 12) == $m ? 'selected' : '' }}>{{ \Carbon\Carbon::create()->month($m)->translatedFormat('M') }}</option>
+                @endfor
+            </select>
+            <select name="trend_year" class="form-input-dash px-2 py-1 text-xs ml-1" onchange="this.form.submit()">
+                @php $currentYear = now()->year; @endphp
+                @for($y = $currentYear - 2; $y <= $currentYear + 1; $y++)
+                    <option value="{{ $y }}" {{ request('trend_year', $currentYear) == $y ? 'selected' : '' }}>{{ $y }}</option>
+                @endfor
+            </select>
+        </form>
+    </div>
     <div class="flex items-end gap-1 sm:gap-3 h-32 overflow-x-auto hide-scrollbar">
         @php 
             $counts = array_column($monthlyTrend, 'count');
