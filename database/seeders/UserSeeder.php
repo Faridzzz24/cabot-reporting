@@ -17,10 +17,10 @@ class UserSeeder extends Seeder
                 'role' => 'admin',
             ],
             [
-                'name' => 'HSE Officer',
-                'email' => 'hse@ptcabot.com',
-                'password' => 'hse12345',
-                'role' => 'hse_officer',
+                'name' => 'SHE Officer',
+                'email' => 'she@ptcabot.com',
+                'password' => 'she12345',
+                'role' => 'she_officer',
             ],
             [
                 'name' => 'Supervisor',

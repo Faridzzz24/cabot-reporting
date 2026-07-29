@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     /**
-     * Show login form for HSE/Atasan.
+     * Show login form for SHE/Atasan.
      */
     public function showLoginForm()
     {

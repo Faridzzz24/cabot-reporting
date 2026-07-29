@@ -110,7 +110,7 @@ class RcaService
                 'generated_at' => now()->toIso8601String(),
                 'model' => $model,
                 'status' => 'draft',
-                'catatan' => 'Draft AI-generated — perlu review HSE Officer sebelum difinalisasi.',
+                'catatan' => 'Draft AI-generated — perlu review SHE Officer sebelum difinalisasi.',
             ];
 
             return [

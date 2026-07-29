@@ -85,10 +85,10 @@ class ReportController extends Controller
             'reporter_phone' => $validated['reporter_phone'] ?? null,
         ]);
 
-        // Notify HSE officers
-        $hseUsers = User::whereIn('role', ['admin', 'hse_officer'])->get();
-        if ($hseUsers->isNotEmpty()) {
-            Notification::send($hseUsers, new NewIncidentReport($report));
+        // Notify SHE officers
+        $sheUsers = User::whereIn('role', ['admin', 'she_officer'])->get();
+        if ($sheUsers->isNotEmpty()) {
+            Notification::send($sheUsers, new NewIncidentReport($report));
         }
 
         return redirect()->route('report.confirmation', $report->tracking_code);

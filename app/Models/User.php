@@ -56,9 +56,9 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
-    public function isHseOfficer(): bool
+    public function isSheOfficer(): bool
     {
-        return $this->role === 'hse_officer';
+        return $this->role === 'she_officer';
     }
 
     public function isSupervisor(): bool
@@ -71,7 +71,7 @@ class User extends Authenticatable
      */
     public function hasAccess(): bool
     {
-        return in_array($this->role, ['admin', 'hse_officer', 'supervisor']);
+        return in_array($this->role, ['admin', 'she_officer', 'supervisor']);
     }
 
     /**
@@ -81,7 +81,7 @@ class User extends Authenticatable
     {
         return match ($this->role) {
             'admin' => 'Administrator',
-            'hse_officer' => 'HSE Officer',
+            'she_officer' => 'SHE Officer',
             'supervisor' => 'Supervisor',
             default => $this->role,
         };

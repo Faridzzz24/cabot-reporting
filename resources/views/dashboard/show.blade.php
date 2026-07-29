@@ -197,7 +197,7 @@
                             @if($report->rca_data && isset($report->rca_data['meta']))
                             <div class="pt-3 border-t border-gray-100">
                                 <p class="text-xs text-gray-400 italic">
-                                    {{ $report->rca_data['meta']['catatan'] ?? 'Draft AI-generated — perlu review HSE Officer.' }}
+                                    {{ $report->rca_data['meta']['catatan'] ?? 'Draft AI-generated — perlu review SHE Officer.' }}
                                     @if(isset($report->rca_data['meta']['reviewed_by']))
                                         <br>Direview oleh: {{ $report->rca_data['meta']['reviewed_by'] }}
                                         @if(isset($report->rca_data['meta']['reviewed_at']))
@@ -339,11 +339,11 @@
             </div>
 
             <div class="glass-card p-5 animate-fade-in-up" style="animation-delay: 0.15s">
-                <h3 class="text-sm font-semibold text-gray-900 mb-4">Tugaskan ke HSE</h3>
+                <h3 class="text-sm font-semibold text-gray-900 mb-4">Tugaskan ke SHE</h3>
                 <form method="POST" action="{{ route('reports.assign', $report->id) }}" class="space-y-4">
                     @csrf @method('PATCH')
                     <select name="assigned_to" class="form-input-dash w-full px-3 py-2.5 text-sm">
-                        <option value="">— Pilih Tim HSE —</option>
+                        <option value="">— Pilih Tim SHE —</option>
                         @foreach($users as $user)
                         <option value="{{ $user->id }}" {{ $report->assigned_to == $user->id ? 'selected' : '' }}>
                             {{ $user->name }} ({{ $user->role_label }})

@@ -30,7 +30,7 @@
                 <label class="text-xs text-gray-500 mb-1 block">Role</label>
                 <select name="role" class="form-input-dash w-full px-3 py-2.5 text-sm" required>
                     <option value="supervisor">Supervisor</option>
-                    <option value="hse_officer">HSE Officer</option>
+                    <option value="she_officer">SHE Officer</option>
                     <option value="admin">Administrator</option>
                 </select>
             </div>

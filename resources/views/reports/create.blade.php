@@ -205,7 +205,7 @@
                 <svg class="w-5 h-5 inline mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
                 Kirim Laporan
             </button>
-            <p class="text-xs text-center text-gray-400 mt-3">Laporan Anda akan langsung diteruskan ke tim HSE PT Cabot.</p>
+            <p class="text-xs text-center text-gray-400 mt-3">Laporan Anda akan langsung diteruskan ke tim SHE PT Cabot.</p>
         </div>
     </form>
 </div>

@@ -11,7 +11,7 @@
             </svg>
         </div>
         <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3">Laporan Berhasil Dikirim!</h1>
-        <p class="text-gray-500 text-sm">Terima kasih atas laporan Anda. Tim HSE akan segera meninjau.</p>
+        <p class="text-gray-500 text-sm">Terima kasih atas laporan Anda. Tim SHE akan segera meninjau.</p>
     </div>
 
     {{-- Tracking Code --}}
