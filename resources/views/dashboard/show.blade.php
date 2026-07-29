@@ -6,7 +6,7 @@
 <div class="max-w-4xl mx-auto">
     <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gray-700 transition-colors mb-6">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-        Kembali ke Dashboard
+        {{ __('Kembali ke Dashboard') }}
     </a>
 
     <div class="grid lg:grid-cols-3 gap-6">
@@ -36,12 +36,12 @@
                 </div>
                 <div class="grid sm:grid-cols-2 gap-4 text-sm">
                     <div class="space-y-3">
-                        <div><p class="text-xs text-gray-400 mb-0.5">Lokasi</p><p class="text-gray-800">{{ $report->location }}</p></div>
-                        <div><p class="text-xs text-gray-400 mb-0.5">Tanggal Kejadian</p><p class="text-gray-800">{{ $report->incident_date->format('d M Y') }} {{ $report->incident_time ? '— ' . $report->incident_time : '' }}</p></div>
-                        <div><p class="text-xs text-gray-400 mb-0.5">Dilaporkan</p><p class="text-gray-800">{{ $report->created_at->format('d M Y, H:i') }} ({{ $report->created_at->diffForHumans() }})</p></div>
+                        <div><p class="text-xs text-gray-400 mb-0.5">{{ __('Lokasi') }}</p><p class="text-gray-800">{{ $report->location }}</p></div>
+                        <div><p class="text-xs text-gray-400 mb-0.5">{{ __('Tanggal Kejadian') }}</p><p class="text-gray-800">{{ $report->incident_date->format('d M Y') }} {{ $report->incident_time ? '— ' . $report->incident_time : '' }}</p></div>
+                        <div><p class="text-xs text-gray-400 mb-0.5">{{ __('Dilaporkan') }}</p><p class="text-gray-800">{{ $report->created_at->format('d M Y, H:i') }} ({{ $report->created_at->diffForHumans() }})</p></div>
                     </div>
                     <div>
-                        <p class="text-xs text-gray-400 mb-1">Pelapor</p>
+                        <p class="text-xs text-gray-400 mb-1">{{ __('Pelapor') }}</p>
                         <p class="text-sm font-medium text-gray-900">{{ $report->reporter_name }}</p>
                         @if($report->reporter_department)
                             <p class="text-xs text-gray-500">{{ $report->reporter_department }}</p>
@@ -55,23 +55,23 @@
 
             {{-- Description --}}
             <div class="glass-card p-6 animate-fade-in-up" style="animation-delay: 0.1s">
-                <h3 class="text-sm font-semibold text-gray-900 mb-3">Deskripsi Kejadian</h3>
+                <h3 class="text-sm font-semibold text-gray-900 mb-3">{{ __('Deskripsi Kejadian') }}</h3>
                 <p class="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">{{ $report->description }}</p>
             </div>
 
             @if($report->photo_data)
             <div class="glass-card p-6 animate-fade-in-up" style="animation-delay: 0.15s">
-                <h3 class="text-sm font-semibold text-gray-900 mb-3">Foto Bukti</h3>
+                <h3 class="text-sm font-semibold text-gray-900 mb-3">{{ __('Foto Bukti') }}</h3>
                 <img src="{{ route('photo.serve', $report->id) }}" alt="Foto bukti insiden" class="rounded-xl max-h-96 w-auto border border-gray-200">
             </div>
             @endif
 
             @if($report->resolution_notes)
             <div class="glass-card p-6 animate-fade-in-up" style="animation-delay: 0.2s">
-                <h3 class="text-sm font-semibold text-gray-900 mb-3">Catatan Resolusi</h3>
+                <h3 class="text-sm font-semibold text-gray-900 mb-3">{{ __('Catatan Resolusi') }}</h3>
                 <p class="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">{{ $report->resolution_notes }}</p>
                 @if($report->resolved_at)
-                <p class="text-xs text-gray-400 mt-2">Diselesaikan: {{ $report->resolved_at->format('d M Y, H:i') }}</p>
+                <p class="text-xs text-gray-400 mt-2">{{ __('Diselesaikan') }}: {{ $report->resolved_at->format('d M Y, H:i') }}</p>
                 @endif
             </div>
             @endif
@@ -93,10 +93,10 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="text-sm font-bold text-gray-900">Root Cause Analysis (RCA)</h3>
+                                        <h3 class="text-sm font-bold text-gray-900">{{ __('Root Cause Analysis (RCA)') }}</h3>
                                         <p class="text-xs text-gray-400" id="rca-timestamp">
                                             @if($report->rca_generated_at)
-                                                Generated {{ $report->rca_generated_at->diffForHumans() }}
+                                                {{ __('Generated') }} {{ $report->rca_generated_at->diffForHumans() }}
                                             @endif
                                         </p>
                                     </div>
@@ -105,7 +105,7 @@
                                     <span id="rca-status-badge" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium
                                         {{ $report->rca_data && ($report->rca_data['meta']['status'] ?? 'draft') === 'reviewed' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700' }}">
                                         <span class="w-1.5 h-1.5 rounded-full {{ $report->rca_data && ($report->rca_data['meta']['status'] ?? 'draft') === 'reviewed' ? 'bg-emerald-500' : 'bg-amber-500' }}"></span>
-                                        {{ $report->rca_data && ($report->rca_data['meta']['status'] ?? 'draft') === 'reviewed' ? 'Reviewed' : 'Draft AI' }}
+                                        {{ $report->rca_data && ($report->rca_data['meta']['status'] ?? 'draft') === 'reviewed' ? __('Reviewed') : __('Draft AI') }}
                                     </span>
                                 </div>
                             </div>
@@ -115,13 +115,13 @@
                         <div class="p-6 space-y-5">
                             {{-- Ringkasan --}}
                             <div id="rca-ringkasan-section" class="{{ $report->rca_data && isset($report->rca_data['ringkasan']) ? '' : 'hidden' }}">
-                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Ringkasan</p>
+                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">{{ __('Ringkasan') }}</p>
                                 <p id="rca-ringkasan" class="text-sm text-gray-700 leading-relaxed bg-gray-50 rounded-xl p-4">{{ $report->rca_data['ringkasan'] ?? '' }}</p>
                             </div>
 
                             {{-- Analisis 5-Why --}}
                             <div>
-                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Analisis 5-Why</p>
+                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ __('Analisis 5-Why') }}</p>
                                 <div id="rca-5why" class="space-y-3">
                                     @if($report->rca_data && isset($report->rca_data['analisis_5_why']))
                                         @foreach($report->rca_data['analisis_5_why'] as $idx => $item)
@@ -136,7 +136,7 @@
 
                             {{-- Akar Masalah --}}
                             <div class="mt-5">
-                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Kemungkinan Akar Masalah</p>
+                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ __('Kemungkinan Akar Masalah') }}</p>
                                 <div id="rca-akar-masalah" class="space-y-2">
                                     @if($report->rca_data && isset($report->rca_data['akar_masalah']))
                                         @foreach($report->rca_data['akar_masalah'] as $idx => $item)
@@ -151,7 +151,7 @@
 
                             {{-- Kategori Fishbone --}}
                             <div>
-                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Analisis Fishbone (Ishikawa)</p>
+                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ __('Analisis Fishbone (Ishikawa)') }}</p>
                                 <div id="rca-kategori" class="grid sm:grid-cols-2 gap-3">
                                     @if($report->rca_data && isset($report->rca_data['kategori']))
                                         @php $icons = [
@@ -178,7 +178,7 @@
 
                             {{-- Rekomendasi --}}
                             <div>
-                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Rekomendasi Tindakan Korektif</p>
+                                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ __('Rekomendasi Tindakan Korektif') }}</p>
                                 <div id="rca-rekomendasi" class="space-y-2">
                                     @if($report->rca_data && isset($report->rca_data['rekomendasi']))
                                         @foreach($report->rca_data['rekomendasi'] as $idx => $item)
@@ -197,9 +197,9 @@
                             @if($report->rca_data && isset($report->rca_data['meta']))
                             <div class="pt-3 border-t border-gray-100">
                                 <p class="text-xs text-gray-400 italic">
-                                    {{ $report->rca_data['meta']['catatan'] ?? 'Draft AI-generated — perlu review SHE Officer.' }}
+                                    {{ $report->rca_data['meta']['catatan'] ?? __('Draft AI-generated — perlu review SHE Officer.') }}
                                     @if(isset($report->rca_data['meta']['reviewed_by']))
-                                        <br>Direview oleh: {{ $report->rca_data['meta']['reviewed_by'] }}
+                                        <br>{{ __('Direview oleh:') }} {{ $report->rca_data['meta']['reviewed_by'] }}
                                         @if(isset($report->rca_data['meta']['reviewed_at']))
                                             ({{ \Carbon\Carbon::parse($report->rca_data['meta']['reviewed_at'])->format('d M Y, H:i') }})
                                         @endif
@@ -259,7 +259,7 @@
 
             {{-- Audit Trail --}}
             <div class="glass-card p-6 animate-fade-in-up" style="animation-delay: 0.25s">
-                <h3 class="text-sm font-semibold text-gray-900 mb-4">Audit Trail</h3>
+                <h3 class="text-sm font-semibold text-gray-900 mb-4">{{ __('Audit Trail') }}</h3>
                 <div class="space-y-3">
                     @forelse($report->auditLogs->sortByDesc('created_at') as $log)
                     <div class="flex items-start gap-3 text-sm">
@@ -281,7 +281,7 @@
                         </div>
                     </div>
                     @empty
-                    <p class="text-xs text-gray-400">Belum ada aktivitas tercatat.</p>
+                    <p class="text-xs text-gray-400">{{ __('Belum ada aktivitas tercatat.') }}</p>
                     @endforelse
                 </div>
             </div>
@@ -299,8 +299,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-sm font-semibold text-gray-900">AI Root Cause Analysis</h3>
-                            <p class="text-xs text-gray-400">Analisis otomatis dengan AI</p>
+                            <h3 class="text-sm font-semibold text-gray-900">{{ __('AI Root Cause Analysis') }}</h3>
+                            <p class="text-xs text-gray-400">{{ __('Analisis otomatis dengan AI') }}</p>
                         </div>
                     </div>
                     <button
@@ -312,38 +312,38 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
                         </svg>
-                        <span id="btn-rca-text">{{ $report->rca_data ? 'Re-generate RCA' : 'Generate RCA' }}</span>
+                        <span id="btn-rca-text">{{ $report->rca_data ? __('Re-generate RCA') : __('Generate RCA') }}</span>
                     </button>
                     @if($report->rca_data)
-                    <p class="text-xs text-center text-gray-400 mt-2">Klik untuk generate ulang analisis</p>
+                    <p class="text-xs text-center text-gray-400 mt-2">{{ __('Klik untuk generate ulang analisis') }}</p>
                     @endif
                 </div>
             </div>
 
             <div class="glass-card p-5 animate-fade-in-up" style="animation-delay: 0.1s">
-                <h3 class="text-sm font-semibold text-gray-900 mb-4">Update Status</h3>
+                <h3 class="text-sm font-semibold text-gray-900 mb-4">{{ __('Update Status') }}</h3>
                 <form method="POST" action="{{ route('reports.updateStatus', $report->id) }}" class="space-y-4">
                     @csrf @method('PATCH')
                     <select name="status" class="form-input-dash w-full px-3 py-2.5 text-sm">
-                        <option value="baru" {{ $report->status === 'baru' ? 'selected' : '' }}>Baru</option>
-                        <option value="ditinjau" {{ $report->status === 'ditinjau' ? 'selected' : '' }}>Ditinjau</option>
-                        <option value="dalam_penanganan" {{ $report->status === 'dalam_penanganan' ? 'selected' : '' }}>Dalam Penanganan</option>
-                        <option value="selesai" {{ $report->status === 'selesai' ? 'selected' : '' }}>Selesai</option>
-                        <option value="ditolak" {{ $report->status === 'ditolak' ? 'selected' : '' }}>Ditolak</option>
+                        <option value="baru" {{ $report->status === 'baru' ? 'selected' : '' }}>{{ __('Baru') }}</option>
+                        <option value="ditinjau" {{ $report->status === 'ditinjau' ? 'selected' : '' }}>{{ __('Ditinjau') }}</option>
+                        <option value="dalam_penanganan" {{ $report->status === 'dalam_penanganan' ? 'selected' : '' }}>{{ __('Dalam Penanganan') }}</option>
+                        <option value="selesai" {{ $report->status === 'selesai' ? 'selected' : '' }}>{{ __('Selesai') }}</option>
+                        <option value="ditolak" {{ $report->status === 'ditolak' ? 'selected' : '' }}>{{ __('Ditolak') }}</option>
                     </select>
-                    <textarea name="resolution_notes" rows="3" placeholder="Catatan resolusi..." class="form-input-dash w-full px-3 py-2.5 text-sm resize-none">{{ $report->resolution_notes }}</textarea>
+                    <textarea name="resolution_notes" rows="3" placeholder="{{ __('Catatan resolusi...') }}" class="form-input-dash w-full px-3 py-2.5 text-sm resize-none">{{ $report->resolution_notes }}</textarea>
                     <button type="submit" class="w-full text-white font-medium py-2.5 rounded-lg transition-all duration-300 text-sm" style="background: var(--cabot-red);">
-                        Simpan Perubahan
+                        {{ __('Simpan Perubahan') }}
                     </button>
                 </form>
             </div>
 
             <div class="glass-card p-5 animate-fade-in-up" style="animation-delay: 0.15s">
-                <h3 class="text-sm font-semibold text-gray-900 mb-4">Tugaskan ke SHE</h3>
+                <h3 class="text-sm font-semibold text-gray-900 mb-4">{{ __('Tugaskan ke SHE') }}</h3>
                 <form method="POST" action="{{ route('reports.assign', $report->id) }}" class="space-y-4">
                     @csrf @method('PATCH')
                     <select name="assigned_to" class="form-input-dash w-full px-3 py-2.5 text-sm">
-                        <option value="">— Pilih Tim SHE —</option>
+                        <option value="">{{ __('— Pilih Tim SHE —') }}</option>
                         @foreach($users as $user)
                         <option value="{{ $user->id }}" {{ $report->assigned_to == $user->id ? 'selected' : '' }}>
                             {{ $user->name }} ({{ $user->role_label }})
@@ -351,20 +351,20 @@
                         @endforeach
                     </select>
                     <button type="submit" class="w-full bg-gray-900 hover:bg-gray-800 text-white font-medium py-2.5 rounded-lg transition-all duration-300 text-sm">
-                        Tugaskan
+                        {{ __('Tugaskan') }}
                     </button>
                 </form>
             </div>
 
             <div class="glass-card p-5 animate-fade-in-up" style="animation-delay: 0.2s">
-                <h3 class="text-sm font-semibold text-gray-900 mb-3">Informasi</h3>
+                <h3 class="text-sm font-semibold text-gray-900 mb-3">{{ __('Informasi') }}</h3>
                 <div class="space-y-2 text-xs">
                     @if($report->assignedUser)
-                    <div class="flex justify-between"><span class="text-gray-400">Ditangani oleh</span><span class="text-gray-700">{{ $report->assignedUser->name }}</span></div>
+                    <div class="flex justify-between"><span class="text-gray-400">{{ __('Ditangani oleh') }}</span><span class="text-gray-700">{{ $report->assignedUser->name }}</span></div>
                     @endif
-                    <div class="flex justify-between"><span class="text-gray-400">Dibuat</span><span class="text-gray-700">{{ $report->created_at->diffForHumans() }}</span></div>
-                    <div class="flex justify-between"><span class="text-gray-400">Terakhir update</span><span class="text-gray-700">{{ $report->updated_at->diffForHumans() }}</span></div>
-                    <div class="flex justify-between"><span class="text-gray-400">Dilihat</span><span class="text-gray-700">{{ $report->auditLogs->where('action', 'viewed')->count() }}x</span></div>
+                    <div class="flex justify-between"><span class="text-gray-400">{{ __('Dibuat') }}</span><span class="text-gray-700">{{ $report->created_at->diffForHumans() }}</span></div>
+                    <div class="flex justify-between"><span class="text-gray-400">{{ __('Terakhir update') }}</span><span class="text-gray-700">{{ $report->updated_at->diffForHumans() }}</span></div>
+                    <div class="flex justify-between"><span class="text-gray-400">{{ __('Dilihat') }}</span><span class="text-gray-700">{{ $report->auditLogs->where('action', 'viewed')->count() }}x</span></div>
                 </div>
             </div>
 
@@ -372,7 +372,7 @@
                 <form method="POST" action="{{ route('reports.destroy', $report->id) }}" id="deleteForm">
                     @csrf @method('DELETE')
                     <button type="button" onclick="confirmDelete(this)" class="w-full text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 font-medium py-2.5 rounded-lg transition-all duration-300 text-sm">
-                        Hapus Laporan
+                        {{ __('Hapus Laporan') }}
                     </button>
                 </form>
             </div>

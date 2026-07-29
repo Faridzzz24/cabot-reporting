@@ -178,7 +178,7 @@
                 </div>
                 <div class="flex items-center gap-4">
                     <!-- Language Switcher -->
-                    <div class="flex items-center gap-2 mr-2 border-r border-gray-200 pr-4">
+                    <div class="flex items-center gap-2">
                         <a href="{{ route('lang.switch', 'id') }}" class="text-xs font-semibold hover:text-red-600 {{ session('locale', 'id') == 'id' ? 'text-red-600' : 'text-gray-400' }}">ID</a>
                         <span class="text-gray-300">|</span>
                         <a href="{{ route('lang.switch', 'en') }}" class="text-xs font-semibold hover:text-red-600 {{ session('locale') == 'en' ? 'text-red-600' : 'text-gray-400' }}">EN</a>
