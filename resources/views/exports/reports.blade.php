@@ -4,10 +4,16 @@
     <meta charset="utf-8">
     <title>Rekap Laporan Insiden K3</title>
     <style>
+        @page {
+            size: A4;
+            margin: 0; /* Remove browser default headers and footers */
+        }
         body {
             font-family: Arial, sans-serif;
             font-size: 11px;
             color: #333;
+            padding: 20mm; /* Padding inside the document to replace page margin */
+            padding-top: 15mm;
         }
         .header {
             text-align: center;
@@ -53,6 +59,20 @@
     </style>
 </head>
 <body>
+
+    <table style="width: 100%; border: none; margin-bottom: 20px; font-size: 11px; color: #666;">
+        <tr>
+            <td style="width: 33%; text-align: left; border: none; padding: 0;">
+                <img src="{{ asset('img/cabot-logo.png') }}" alt="Logo Cabot" style="height: 35px;">
+            </td>
+            <td style="width: 34%; text-align: center; border: none; padding: 0;">
+                {{ now()->format('d/m/Y, H:i') }}
+            </td>
+            <td style="width: 33%; text-align: right; border: none; padding: 0;">
+                Rekap Laporan Insiden K3
+            </td>
+        </tr>
+    </table>
 
     <div class="header">
         <h2>REKAPITULASI LAPORAN INSIDEN K3</h2>
