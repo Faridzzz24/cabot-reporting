@@ -142,7 +142,7 @@
                     <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
                     <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
                     <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
-                    <th class="px-2 sm:px-5 py-3 sm:py-4"></th>
+                    <th class="text-center px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-50">
@@ -177,11 +177,11 @@
                     <td class="px-2 sm:px-5 py-3 sm:py-4 hidden md:table-cell">
                         <span class="text-xs text-gray-700">{{ $report->reporter_name }}</span>
                     </td>
-                    <td class="px-2 sm:px-5 py-3 sm:py-4 hidden lg:table-cell">
+                    <td class="px-2 sm:px-5 py-3 sm:py-4 hidden lg:table-cell align-middle">
                         <span class="text-xs text-gray-400">{{ $report->created_at->format('d/m/Y') }}</span>
                     </td>
-                    <td class="px-2 sm:px-5 py-3 sm:py-4 text-right">
-                        <a href="{{ route('reports.show', $report->id) }}" class="text-[10px] sm:text-xs font-medium opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style="color: var(--cabot-red);">
+                    <td class="px-2 sm:px-5 py-3 sm:py-4 text-center align-middle">
+                        <a href="{{ route('reports.show', $report->id) }}" class="inline-block text-[10px] sm:text-xs font-medium whitespace-nowrap hover:opacity-80 transition-opacity" style="color: var(--cabot-red);">
                             Lihat →
                         </a>
                     </td>
