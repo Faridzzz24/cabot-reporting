@@ -142,19 +142,15 @@
 
 <!-- Word Header Definition -->
 <div style="mso-element:header" id="h1">
-    <table style="width: 100%; border: none; margin-bottom: 20px; font-size: 11px; color: #666;">
-        <tr>
-            <td style="width: 33%; text-align: left; border: none; padding: 0;">
-                @php
-                    $logoPath = public_path('img/cabot-logo.png');
-                    $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(file_get_contents($logoPath)) : asset('img/cabot-logo.png');
-                @endphp
-                <img src="{{ $logoBase64 }}" alt="Logo Cabot" style="height: 35px;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin-bottom: 20px; font-size: 11px; color: #666;">
+        <tr style="height: 40px;">
+            <td width="33%" align="left" valign="middle" style="border: none; padding: 0;">
+                <img src="{{ asset('img/cabot-logo.png') }}" alt="Logo Cabot" height="35" style="height: 35px;">
             </td>
-            <td style="width: 34%; text-align: center; border: none; padding: 0;">
+            <td width="34%" align="center" valign="middle" style="border: none; padding: 0;">
                 {{ now()->format('d/m/Y, H:i') }}
             </td>
-            <td style="width: 33%; text-align: right; border: none; padding: 0;">
+            <td width="33%" align="right" valign="middle" style="border: none; padding: 0;">
                 Rekap Laporan Insiden K3
             </td>
         </tr>
