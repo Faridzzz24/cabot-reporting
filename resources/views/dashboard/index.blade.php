@@ -204,16 +204,16 @@
                         <input type="checkbox" name="ids[]" value="{{ $report->id }}" class="row-checkbox rounded border-gray-300 text-red-600 focus:ring-red-500">
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
-                        <span class="font-mono text-[10px] sm:text-xs" style="color: var(--cabot-red);">{{ $report->tracking_code }}</span>
+                        <span class="font-mono text-[10px] sm:text-xs font-medium" style="color: var(--cabot-red);">{{ $report->tracking_code }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
-                        <span class="text-gray-700 text-[10px] sm:text-xs">{{ $report->incident_type_label }}</span>
+                        <span class="text-gray-700 text-[10px] sm:text-xs font-medium">{{ $report->incident_type_label }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center hidden sm:table-cell">
-                        <span class="text-gray-700 text-[10px] sm:text-xs">{{ Str::limit($report->location, 20) }}</span>
+                        <span class="text-gray-700 text-[10px] sm:text-xs font-medium">{{ Str::limit($report->location, 20) }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
-                        <span class="text-[10px] sm:text-xs whitespace-nowrap
+                        <span class="text-[10px] sm:text-xs font-medium whitespace-nowrap
                             {{ $report->urgency === 'rendah' ? 'text-emerald-600' : '' }}
                             {{ $report->urgency === 'sedang' ? 'text-amber-600' : '' }}
                             {{ $report->urgency === 'tinggi' ? 'text-red-600' : '' }}
@@ -221,7 +221,7 @@
                         ">{{ $report->urgency_label }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center">
-                        <span class="text-[10px] sm:text-xs whitespace-nowrap
+                        <span class="text-[10px] sm:text-xs font-medium whitespace-nowrap
                             {{ $report->status === 'baru' ? 'text-blue-600' : '' }}
                             {{ $report->status === 'ditinjau' ? 'text-purple-600' : '' }}
                             {{ $report->status === 'dalam_penanganan' ? 'text-indigo-600' : '' }}
@@ -231,11 +231,11 @@
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center hidden md:table-cell">
                         <div class="flex items-center justify-center gap-2">
-                            <span class="text-gray-700 text-[10px] sm:text-xs">{{ $report->reporter_name }}</span>
+                            <span class="text-gray-700 text-[10px] sm:text-xs font-medium">{{ $report->reporter_name }}</span>
                         </div>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center hidden lg:table-cell align-middle">
-                        <span class="text-gray-700 text-[10px] sm:text-xs">{{ $report->created_at->format('d/m/Y') }}</span>
+                        <span class="text-gray-700 text-[10px] sm:text-xs font-medium">{{ $report->created_at->format('d/m/Y') }}</span>
                     </td>
                     <td class="px-4 sm:px-6 py-3 sm:py-4 text-center align-middle">
                         <a href="{{ route('reports.show', $report->id) }}" class="inline-block text-[10px] sm:text-xs font-medium whitespace-nowrap hover:opacity-80 transition-opacity" style="color: var(--cabot-red);">
