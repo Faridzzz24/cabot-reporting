@@ -180,13 +180,7 @@ class DashboardController extends Controller
             return response()->view('exports.reports', compact('reports', 'format'));
         }
 
-        if ($format === 'word') {
-            $headers = [
-                'Content-Type' => 'application/vnd.ms-word',
-                'Content-Disposition' => "attachment; filename=\"laporan-insiden-{$dateStr}.doc\"",
-            ];
-            return response()->view('exports.reports', compact('reports', 'format'), 200, $headers);
-        }
+
 
         // Default to CSV
         $filename = "laporan-insiden-{$dateStr}.csv";

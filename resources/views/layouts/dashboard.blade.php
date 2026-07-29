@@ -115,7 +115,6 @@
                     <div class="hidden group-hover:block pl-11 pr-4 py-2 space-y-2">
                         <a href="{{ route('reports.export', ['format' => 'csv']) }}" class="block text-sm text-gray-500 hover:text-gray-900 transition-colors">📄 Format CSV</a>
                         <a href="{{ route('reports.export', ['format' => 'pdf']) }}" class="block text-sm text-gray-500 hover:text-gray-900 transition-colors" target="_blank">📑 Format PDF</a>
-                        <a href="{{ route('reports.export', ['format' => 'word']) }}" class="block text-sm text-gray-500 hover:text-gray-900 transition-colors">📝 Format Word</a>
                     </div>
                 </div>
 

@@ -1,36 +1,20 @@
 <!DOCTYPE html>
-@if(isset($format) && $format === 'word')
-<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
-@else
 <html>
-@endif
 <head>
     <meta charset="utf-8">
     <title>Rekap Laporan Insiden K3</title>
     <style>
-        @if(isset($format) && $format === 'word')
-        @page WordSection1 {
-            mso-header-margin: .5in;
-            mso-footer-margin: .5in;
-            mso-header: h1;
-        }
-        div.WordSection1 { page: WordSection1; }
-        p.MsoHeader { margin: 0; }
-        @else
         @page {
             size: A4;
             margin: 0; /* Remove browser default headers and footers */
         }
-        @endif
 
         body {
             font-family: Arial, sans-serif;
             font-size: 11px;
             color: #333;
-            @if(isset($format) && $format !== 'word')
             padding: 20mm; /* Padding inside the document to replace page margin */
             padding-top: 15mm;
-            @endif
         }
         .header {
             text-align: center;
@@ -77,11 +61,6 @@
 </head>
 <body>
 
-@if(isset($format) && $format === 'word')
-<div class="WordSection1">
-@endif
-
-    @if(!isset($format) || $format !== 'word')
     <!-- Web/PDF Header -->
     <table style="width: 100%; border: none; margin-bottom: 20px; font-size: 11px; color: #666;">
         <tr>
@@ -136,27 +115,6 @@
             @endforeach
         </tbody>
     </table>
-
-@if(isset($format) && $format === 'word')
-</div>
-
-<!-- Word Header Definition -->
-<div style="mso-element:header" id="h1">
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin-bottom: 20px; font-size: 11px; color: #666;">
-        <tr style="height: 40px;">
-            <td width="33%" align="left" valign="middle" style="border: none; padding: 0;">
-                <img src="{{ asset('img/cabot-logo.png') }}" alt="Logo Cabot" height="35" style="height: 35px;">
-            </td>
-            <td width="34%" align="center" valign="middle" style="border: none; padding: 0;">
-                {{ now()->format('d/m/Y, H:i') }}
-            </td>
-            <td width="33%" align="right" valign="middle" style="border: none; padding: 0;">
-                Rekap Laporan Insiden K3
-            </td>
-        </tr>
-    </table>
-</div>
-@endif
 
     @if(isset($format) && $format === 'pdf')
     <script>
