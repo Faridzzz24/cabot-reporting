@@ -153,32 +153,32 @@
                     <th class="checkbox-col hidden px-2 sm:px-5 py-3 sm:py-4 w-10 text-center align-middle">
                         <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-red-600 focus:ring-red-500 transition-colors">
                     </th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Kode</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Jenis</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Urgensi</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Status</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
-                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
-                    <th class="text-center px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Aksi</th>
+                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Kode</th>
+                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Jenis</th>
+                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
+                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Urgensi</th>
+                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Status</th>
+                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
+                    <th class="text-left px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
+                    <th class="text-center px-4 sm:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-50">
                 @forelse($reports as $report)
                 <tr class="hover:bg-red-50/40 transition-colors group">
-                    <td class="checkbox-col hidden px-2 sm:px-5 py-3 sm:py-4 text-center align-middle">
+                    <td class="checkbox-col hidden px-4 sm:px-6 py-3 sm:py-4 text-center align-middle">
                         <input type="checkbox" name="ids[]" value="{{ $report->id }}" class="row-checkbox rounded border-gray-300 text-red-600 focus:ring-red-500">
                     </td>
-                    <td class="px-2 sm:px-5 py-3 sm:py-4">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4">
                         <span class="font-mono text-[10px] sm:text-xs font-semibold" style="color: var(--cabot-red);">{{ $report->tracking_code }}</span>
                     </td>
-                    <td class="px-2 sm:px-5 py-3 sm:py-4">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4">
                         <span class="text-gray-700 text-[10px] sm:text-xs">{{ $report->incident_type_label }}</span>
                     </td>
-                    <td class="px-2 sm:px-5 py-3 sm:py-4 hidden sm:table-cell">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 hidden sm:table-cell">
                         <span class="text-gray-500 text-xs">{{ Str::limit($report->location, 20) }}</span>
                     </td>
-                    <td class="px-2 sm:px-5 py-3 sm:py-4">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4">
                         <span class="px-1 sm:px-2 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-semibold whitespace-nowrap
                             {{ $report->urgency === 'rendah' ? 'bg-emerald-100 text-emerald-700' : '' }}
                             {{ $report->urgency === 'sedang' ? 'bg-amber-100 text-amber-700' : '' }}
@@ -186,7 +186,7 @@
                             {{ $report->urgency === 'kritis' ? 'bg-red-100 text-red-700' : '' }}
                         ">{{ $report->urgency_label }}</span>
                     </td>
-                    <td class="px-2 sm:px-5 py-3 sm:py-4">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4">
                         <span class="px-1 sm:px-2 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-semibold whitespace-nowrap
                             {{ $report->status === 'baru' ? 'bg-blue-100 text-blue-700' : '' }}
                             {{ $report->status === 'ditinjau' ? 'bg-purple-100 text-purple-700' : '' }}
@@ -195,13 +195,13 @@
                             {{ $report->status === 'ditolak' ? 'bg-red-100 text-red-700' : '' }}
                         ">{{ $report->status_label }}</span>
                     </td>
-                    <td class="px-2 sm:px-5 py-3 sm:py-4 hidden md:table-cell">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 hidden md:table-cell">
                         <span class="text-xs text-gray-700">{{ $report->reporter_name }}</span>
                     </td>
-                    <td class="px-2 sm:px-5 py-3 sm:py-4 hidden lg:table-cell align-middle">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 hidden lg:table-cell align-middle">
                         <span class="text-xs text-gray-400">{{ $report->created_at->format('d/m/Y') }}</span>
                     </td>
-                    <td class="px-2 sm:px-5 py-3 sm:py-4 text-center align-middle">
+                    <td class="px-4 sm:px-6 py-3 sm:py-4 text-center align-middle">
                         <a href="{{ route('reports.show', $report->id) }}" class="inline-block text-[10px] sm:text-xs font-medium whitespace-nowrap hover:opacity-80 transition-opacity" style="color: var(--cabot-red);">
                             Lihat →
                         </a>
