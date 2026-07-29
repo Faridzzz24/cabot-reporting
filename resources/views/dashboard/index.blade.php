@@ -57,8 +57,8 @@
 </div>
 
 {{-- Monthly Trend --}}
-<div class="glass-card p-5 mb-8 animate-fade-in-up" style="animation-delay: 0.3s">
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
+<div class="glass-card p-4 sm:p-5 mb-5 animate-fade-in-up" style="animation-delay: 0.3s">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-3">
         <h3 class="text-sm font-semibold text-gray-900">
             Tren Laporan 
             <span class="text-gray-500 font-normal">
@@ -93,7 +93,7 @@
             </button>
         </form>
     </div>
-    <div class="flex items-end gap-1 sm:gap-3 h-32 overflow-x-auto hide-scrollbar">
+    <div class="flex items-end gap-1 sm:gap-3 h-20 sm:h-24 mt-2 overflow-x-auto hide-scrollbar">
         @php 
             $counts = array_column($monthlyTrend, 'count');
             $maxCount = count($counts) > 0 ? max($counts) : 1;
