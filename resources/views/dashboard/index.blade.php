@@ -62,8 +62,8 @@
         <h3 class="text-sm font-semibold text-gray-900">
             {{ __('Tren Laporan') }} 
             <span class="text-gray-500 font-normal">
-                ({{ \Carbon\Carbon::create()->month(request('trend_start', 1))->translatedFormat('F') }} - 
-                {{ \Carbon\Carbon::create()->month(request('trend_end', 6))->translatedFormat('F') }} 
+                ({{ \Carbon\Carbon::create()->month((int) request('trend_start', 1))->translatedFormat('F') }} - 
+                {{ \Carbon\Carbon::create()->month((int) request('trend_end', 6))->translatedFormat('F') }} 
                 {{ request('trend_year', now()->year) }})
             </span>
         </h3>
