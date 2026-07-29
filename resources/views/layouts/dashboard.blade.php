@@ -116,33 +116,33 @@
             <nav class="flex-1 p-4 space-y-1">
                 <a href="{{ route('dashboard') }}" class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-                    Dashboard
+                    {{ __('Dashboard') }}
                 </a>
                 
                 <div class="relative group">
                     <button class="sidebar-link w-full text-left justify-between">
                         <span class="flex items-center gap-3">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                            Export Laporan
+                            {{ __('Export Laporan') }}
                         </span>
                         <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="hidden group-hover:block pl-11 pr-4 py-2 space-y-2">
-                        <a href="{{ route('reports.export', ['format' => 'csv']) }}" class="block text-sm text-gray-500 hover:text-gray-900 transition-colors">📄 Format CSV</a>
-                        <a href="{{ route('reports.export', ['format' => 'pdf']) }}" class="block text-sm text-gray-500 hover:text-gray-900 transition-colors" target="_blank">📑 Format PDF</a>
+                        <a href="{{ route('reports.export', ['format' => 'csv']) }}" class="block text-sm text-gray-500 hover:text-gray-900 transition-colors">📄 {{ __('Format CSV') }}</a>
+                        <a href="{{ route('reports.export', ['format' => 'pdf']) }}" class="block text-sm text-gray-500 hover:text-gray-900 transition-colors" target="_blank">📑 {{ __('Format PDF') }}</a>
                     </div>
                 </div>
 
                 @if(auth()->user()->isAdmin())
                 <a href="{{ route('users.index') }}" class="sidebar-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                    Kelola User
+                    {{ __('Kelola User') }}
                 </a>
                 @endif
                 <div class="pt-4 mt-4 border-t border-gray-100">
                     <a href="/" class="sidebar-link" target="_blank">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                        Lihat Form Publik
+                        {{ __('Lihat Form Publik') }}
                     </a>
                 </div>
             </nav>

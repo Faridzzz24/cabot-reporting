@@ -89,7 +89,7 @@
                 @endfor
             </select>
             <button type="submit" class="px-3 py-1 rounded-md text-white text-xs font-medium transition-all ml-1" style="background: var(--cabot-red); hover:opacity-90;">
-                Terapkan
+                {{ __('Terapkan') }}
             </button>
         </form>
     </div>
@@ -114,31 +114,31 @@
 <div class="glass-card p-4 mb-6 animate-fade-in-up" style="animation-delay: 0.35s">
     <form method="GET" action="{{ route('dashboard') }}" class="flex flex-wrap gap-3 items-end">
         <div class="flex-1 min-w-[200px]">
-            <label class="text-xs text-gray-400 mb-1 block">Cari</label>
-            <input type="text" name="search" value="{{ request('search') }}" placeholder="Kode tracking, deskripsi, lokasi..." class="form-input-dash w-full px-3 py-2 text-sm">
+            <label class="text-xs text-gray-400 mb-1 block">{{ __('Cari') }}</label>
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('Kode tracking, deskripsi, lokasi...') }}" class="form-input-dash w-full px-3 py-2 text-sm">
         </div>
         <div>
-            <label class="text-xs text-gray-400 mb-1 block">Jenis</label>
+            <label class="text-xs text-gray-400 mb-1 block">{{ __('Jenis') }}</label>
             <select name="type" class="form-input-dash px-3 py-2 text-sm">
-                <option value="">Semua</option>
-                <option value="near_miss" {{ request('type') === 'near_miss' ? 'selected' : '' }}>Near Miss</option>
-                <option value="unsafe_act" {{ request('type') === 'unsafe_act' ? 'selected' : '' }}>Unsafe Act</option>
-                <option value="unsafe_condition" {{ request('type') === 'unsafe_condition' ? 'selected' : '' }}>Unsafe Condition</option>
-                <option value="kecelakaan_ringan" {{ request('type') === 'kecelakaan_ringan' ? 'selected' : '' }}>Kecelakaan Ringan</option>
-                <option value="kecelakaan_berat" {{ request('type') === 'kecelakaan_berat' ? 'selected' : '' }}>Kecelakaan Berat</option>
-                <option value="kebakaran" {{ request('type') === 'kebakaran' ? 'selected' : '' }}>Kebakaran</option>
-                <option value="tumpahan_kimia" {{ request('type') === 'tumpahan_kimia' ? 'selected' : '' }}>Tumpahan Kimia</option>
-                <option value="lainnya" {{ request('type') === 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                <option value="">{{ __('Semua') }}</option>
+                <option value="near_miss" {{ request('type') === 'near_miss' ? 'selected' : '' }}>{{ __('Near Miss (Hampir terjadi kecelakaan)') }}</option>
+                <option value="unsafe_act" {{ request('type') === 'unsafe_act' ? 'selected' : '' }}>{{ __('Unsafe Act (Perilaku tidak aman)') }}</option>
+                <option value="unsafe_condition" {{ request('type') === 'unsafe_condition' ? 'selected' : '' }}>{{ __('Unsafe Condition (Kondisi area tidak aman)') }}</option>
+                <option value="kecelakaan_ringan" {{ request('type') === 'kecelakaan_ringan' ? 'selected' : '' }}>{{ __('Kecelakaan Ringan (Cedera minor/P3K)') }}</option>
+                <option value="kecelakaan_berat" {{ request('type') === 'kecelakaan_berat' ? 'selected' : '' }}>{{ __('Kecelakaan Berat (Cedera serius/rawat inap)') }}</option>
+                <option value="kebakaran" {{ request('type') === 'kebakaran' ? 'selected' : '' }}>{{ __('Kebakaran (Api/asap/ledakan)') }}</option>
+                <option value="tumpahan_kimia" {{ request('type') === 'tumpahan_kimia' ? 'selected' : '' }}>{{ __('Tumpahan Kimia (Tumpahan bahan berbahaya)') }}</option>
+                <option value="lainnya" {{ request('type') === 'lainnya' ? 'selected' : '' }}>{{ __('Lainnya') }}</option>
             </select>
         </div>
         <div>
-            <label class="text-xs text-gray-400 mb-1 block">Urgensi</label>
+            <label class="text-xs text-gray-400 mb-1 block">{{ __('Urgensi') }}</label>
             <select name="urgency" class="form-input-dash px-3 py-2 text-sm">
-                <option value="">Semua</option>
-                <option value="rendah" {{ request('urgency') === 'rendah' ? 'selected' : '' }}>Rendah</option>
-                <option value="sedang" {{ request('urgency') === 'sedang' ? 'selected' : '' }}>Sedang</option>
-                <option value="tinggi" {{ request('urgency') === 'tinggi' ? 'selected' : '' }}>Tinggi</option>
-                <option value="kritis" {{ request('urgency') === 'kritis' ? 'selected' : '' }}>Kritis</option>
+                <option value="">{{ __('Semua') }}</option>
+                <option value="rendah" {{ request('urgency') === 'rendah' ? 'selected' : '' }}>{{ __('Rendah') }}</option>
+                <option value="sedang" {{ request('urgency') === 'sedang' ? 'selected' : '' }}>{{ __('Sedang') }}</option>
+                <option value="tinggi" {{ request('urgency') === 'tinggi' ? 'selected' : '' }}>{{ __('Tinggi') }}</option>
+                <option value="kritis" {{ request('urgency') === 'kritis' ? 'selected' : '' }}>{{ __('Kritis') }}</option>
             </select>
         </div>
         <div>
