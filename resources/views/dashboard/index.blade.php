@@ -131,10 +131,22 @@
 
 {{-- Reports Table --}}
 <div class="glass-card overflow-hidden animate-fade-in-up" style="animation-delay: 0.4s">
+    <form id="bulk-delete-form" method="POST" action="{{ route('reports.bulkDestroy') }}">
+        @csrf
+        @method('DELETE')
+        
+        <div id="bulk-action-bar" class="hidden px-5 py-3 bg-red-50 border-b border-red-100 flex justify-between items-center">
+            <span class="text-sm text-red-800 font-medium"><span id="selected-count">0</span> laporan terpilih</span>
+            <button type="submit" class="px-3 py-1.5 bg-red-600 text-white text-xs font-semibold rounded-md hover:bg-red-700 transition-colors" onclick="return confirm('Apakah Anda yakin ingin menghapus semua laporan yang dipilih secara permanen?')">Hapus Terpilih</button>
+        </div>
+
     <div class="overflow-x-auto">
         <table class="w-full text-sm">
             <thead>
                 <tr class="border-b border-gray-100 bg-gray-50/50">
+                    <th class="px-2 sm:px-5 py-3 sm:py-4 w-10">
+                        <input type="checkbox" id="selectAll" class="rounded border-gray-300 text-red-600 focus:ring-red-500">
+                    </th>
                     <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Kode</th>
                     <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Jenis</th>
                     <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
@@ -148,6 +160,9 @@
             <tbody class="divide-y divide-gray-50">
                 @forelse($reports as $report)
                 <tr class="hover:bg-gray-50/50 transition-colors group">
+                    <td class="px-2 sm:px-5 py-3 sm:py-4">
+                        <input type="checkbox" name="ids[]" value="{{ $report->id }}" class="row-checkbox rounded border-gray-300 text-red-600 focus:ring-red-500">
+                    </td>
                     <td class="px-2 sm:px-5 py-3 sm:py-4">
                         <span class="font-mono text-[10px] sm:text-xs font-semibold" style="color: var(--cabot-red);">{{ $report->tracking_code }}</span>
                     </td>
@@ -188,7 +203,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="8" class="px-5 py-12 text-center">
+                    <td colspan="9" class="px-5 py-12 text-center">
                         <svg class="w-12 h-12 text-gray-200 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                         <p class="text-sm text-gray-400">Belum ada laporan.</p>
                     </td>
@@ -203,5 +218,38 @@
         {{ $reports->links() }}
     </div>
     @endif
+    </form>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectAll = document.getElementById('selectAll');
+        const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+        const bulkActionBar = document.getElementById('bulk-action-bar');
+        const selectedCountSpan = document.getElementById('selected-count');
+
+        if(selectAll && rowCheckboxes.length > 0) {
+            selectAll.addEventListener('change', function(e) {
+                rowCheckboxes.forEach(cb => cb.checked = e.target.checked);
+                updateBulkActions();
+            });
+
+            rowCheckboxes.forEach(cb => {
+                cb.addEventListener('change', updateBulkActions);
+            });
+        }
+
+        function updateBulkActions() {
+            const checkedCount = Array.from(rowCheckboxes).filter(cb => cb.checked).length;
+            selectedCountSpan.textContent = checkedCount;
+            
+            if (checkedCount > 0) {
+                bulkActionBar.classList.remove('hidden');
+            } else {
+                bulkActionBar.classList.add('hidden');
+                if(selectAll) selectAll.checked = false;
+            }
+        }
+    });
+</script>
 @endsection

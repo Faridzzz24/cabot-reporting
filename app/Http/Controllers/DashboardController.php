@@ -236,6 +236,21 @@ class DashboardController extends Controller
     }
 
     /**
+     * Hapus banyak laporan (Bulk Delete).
+     */
+    public function bulkDestroy(Request $request)
+    {
+        $validated = $request->validate([
+            'ids' => ['required', 'array'],
+            'ids.*' => ['exists:incident_reports,id']
+        ]);
+
+        IncidentReport::whereIn('id', $validated['ids'])->delete();
+
+        return redirect()->route('dashboard')->with('success', count($validated['ids']) . ' laporan berhasil dihapus secara permanen.');
+    }
+
+    /**
      * Serve foto dari database.
      */
     public function servePhoto(int $id)

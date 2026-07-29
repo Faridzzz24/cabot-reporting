@@ -25,6 +25,7 @@ Route::middleware(['auth', 'role:admin,hse_officer,supervisor'])->prefix('dashbo
     Route::get('/reports/{id}', [DashboardController::class, 'show'])->name('reports.show');
     Route::patch('/reports/{id}/status', [DashboardController::class, 'updateStatus'])->name('reports.updateStatus');
     Route::patch('/reports/{id}/assign', [DashboardController::class, 'assign'])->name('reports.assign');
+    Route::delete('/reports/bulk-delete', [DashboardController::class, 'bulkDestroy'])->name('reports.bulkDestroy');
     Route::delete('/reports/{id}', [DashboardController::class, 'destroy'])->name('reports.destroy');
     Route::get('/export', [DashboardController::class, 'export'])->name('reports.export');
 
