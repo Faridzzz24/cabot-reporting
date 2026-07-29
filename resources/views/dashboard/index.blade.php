@@ -59,18 +59,18 @@
 {{-- Monthly Trend --}}
 <div class="glass-card p-5 mb-8 animate-fade-in-up" style="animation-delay: 0.3s">
     <h3 class="text-sm font-semibold text-gray-900 mb-4">Tren Laporan (6 Bulan Terakhir)</h3>
-    <div class="flex items-end gap-3 h-32">
+    <div class="flex items-end gap-1 sm:gap-3 h-32 overflow-x-auto hide-scrollbar">
         @php 
             $counts = array_column($monthlyTrend, 'count');
             $maxCount = count($counts) > 0 ? max($counts) : 1;
             if ($maxCount == 0) $maxCount = 1;
         @endphp
         @foreach($monthlyTrend as $month)
-        <div class="flex-1 flex flex-col items-center gap-2">
-            <span class="text-xs font-medium text-gray-700">{{ $month['count'] }}</span>
+        <div class="flex-1 min-w-[35px] sm:min-w-0 flex flex-col items-center gap-1 sm:gap-2">
+            <span class="text-[10px] sm:text-xs font-medium text-gray-700">{{ $month['count'] }}</span>
             <div class="w-full rounded-t-lg transition-all duration-500 hover:opacity-80"
                  style="height: {{ $maxCount > 0 ? max(($month['count'] / $maxCount) * 100, 4) : 4 }}%; background: var(--cabot-red);"></div>
-            <span class="text-xs text-gray-400 truncate w-full text-center">{{ $month['month'] }}</span>
+            <span class="text-[10px] sm:text-xs text-gray-400 truncate w-full text-center">{{ $month['month'] }}</span>
         </div>
         @endforeach
     </div>
@@ -135,38 +135,38 @@
         <table class="w-full text-sm">
             <thead>
                 <tr class="border-b border-gray-100 bg-gray-50/50">
-                    <th class="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Kode</th>
-                    <th class="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Jenis</th>
-                    <th class="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
-                    <th class="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Urgensi</th>
-                    <th class="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                    <th class="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
-                    <th class="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
-                    <th class="px-5 py-4"></th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Kode</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Jenis</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Lokasi</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Urgensi</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">Pelapor</th>
+                    <th class="text-left px-2 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Tanggal</th>
+                    <th class="px-2 sm:px-5 py-3 sm:py-4"></th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-50">
                 @forelse($reports as $report)
                 <tr class="hover:bg-gray-50/50 transition-colors group">
-                    <td class="px-5 py-4">
-                        <span class="font-mono text-xs font-semibold" style="color: var(--cabot-red);">{{ $report->tracking_code }}</span>
+                    <td class="px-2 sm:px-5 py-3 sm:py-4">
+                        <span class="font-mono text-[10px] sm:text-xs font-semibold" style="color: var(--cabot-red);">{{ $report->tracking_code }}</span>
                     </td>
-                    <td class="px-5 py-4">
-                        <span class="text-gray-700 text-xs">{{ $report->incident_type_label }}</span>
+                    <td class="px-2 sm:px-5 py-3 sm:py-4">
+                        <span class="text-gray-700 text-[10px] sm:text-xs">{{ $report->incident_type_label }}</span>
                     </td>
-                    <td class="px-5 py-4 hidden sm:table-cell">
+                    <td class="px-2 sm:px-5 py-3 sm:py-4 hidden sm:table-cell">
                         <span class="text-gray-500 text-xs">{{ Str::limit($report->location, 20) }}</span>
                     </td>
-                    <td class="px-5 py-4">
-                        <span class="px-2 py-1 rounded-full text-xs font-semibold
+                    <td class="px-2 sm:px-5 py-3 sm:py-4">
+                        <span class="px-1 sm:px-2 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-semibold whitespace-nowrap
                             {{ $report->urgency === 'rendah' ? 'bg-emerald-100 text-emerald-700' : '' }}
                             {{ $report->urgency === 'sedang' ? 'bg-amber-100 text-amber-700' : '' }}
                             {{ $report->urgency === 'tinggi' ? 'bg-orange-100 text-orange-700' : '' }}
                             {{ $report->urgency === 'kritis' ? 'bg-red-100 text-red-700' : '' }}
                         ">{{ $report->urgency_label }}</span>
                     </td>
-                    <td class="px-5 py-4">
-                        <span class="px-2 py-1 rounded-full text-xs font-semibold
+                    <td class="px-2 sm:px-5 py-3 sm:py-4">
+                        <span class="px-1 sm:px-2 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-semibold whitespace-nowrap
                             {{ $report->status === 'baru' ? 'bg-blue-100 text-blue-700' : '' }}
                             {{ $report->status === 'ditinjau' ? 'bg-purple-100 text-purple-700' : '' }}
                             {{ $report->status === 'dalam_penanganan' ? 'bg-amber-100 text-amber-700' : '' }}
@@ -174,14 +174,14 @@
                             {{ $report->status === 'ditolak' ? 'bg-red-100 text-red-700' : '' }}
                         ">{{ $report->status_label }}</span>
                     </td>
-                    <td class="px-5 py-4 hidden md:table-cell">
+                    <td class="px-2 sm:px-5 py-3 sm:py-4 hidden md:table-cell">
                         <span class="text-xs text-gray-700">{{ $report->reporter_name }}</span>
                     </td>
-                    <td class="px-5 py-4 hidden lg:table-cell">
+                    <td class="px-2 sm:px-5 py-3 sm:py-4 hidden lg:table-cell">
                         <span class="text-xs text-gray-400">{{ $report->created_at->format('d/m/Y') }}</span>
                     </td>
-                    <td class="px-5 py-4">
-                        <a href="{{ route('reports.show', $report->id) }}" class="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity" style="color: var(--cabot-red);">
+                    <td class="px-2 sm:px-5 py-3 sm:py-4 text-right">
+                        <a href="{{ route('reports.show', $report->id) }}" class="text-[10px] sm:text-xs font-medium opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style="color: var(--cabot-red);">
                             Lihat →
                         </a>
                     </td>
