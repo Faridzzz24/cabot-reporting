@@ -60,9 +60,9 @@
 <div class="glass-card p-4 sm:p-5 mb-5 animate-fade-in-up" style="animation-delay: 0.3s">
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
         <h3 class="text-sm font-semibold text-gray-900">
-            Tren Laporan 
+            {{ __('Tren Laporan') }} 
             <span class="text-gray-500 font-normal">
-                ({{ \Carbon\Carbon::create()->month(request('trend_start', 7))->translatedFormat('F') }} - 
+                ({{ \Carbon\Carbon::create()->month(request('trend_start', 1))->translatedFormat('F') }} - 
                 {{ \Carbon\Carbon::create()->month(request('trend_end', 12))->translatedFormat('F') }} 
                 {{ request('trend_year', now()->year) }})
             </span>
@@ -73,7 +73,7 @@
             @endforeach
             <select name="trend_start" class="form-input-dash px-2 py-1 text-xs">
                 @for($m = 1; $m <= 12; $m++)
-                    <option value="{{ $m }}" {{ request('trend_start', 7) == $m ? 'selected' : '' }}>{{ \Carbon\Carbon::create()->month($m)->translatedFormat('M') }}</option>
+                    <option value="{{ $m }}" {{ request('trend_start', 1) == $m ? 'selected' : '' }}>{{ \Carbon\Carbon::create()->month($m)->translatedFormat('M') }}</option>
                 @endfor
             </select>
             <span class="text-gray-400 text-xs">-</span>
