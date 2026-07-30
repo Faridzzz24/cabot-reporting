@@ -28,7 +28,7 @@
                     <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Hentikan semua aktivitas sejenak (1–5 menit)</li>
                     <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Jangan terburu-buru memulai pekerjaan</li>
                     <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Perhatikan kondisi sekitar dengan seksama</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Jika ragu atau merasa tidak aman — BERHENTI</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Jika ragu atau merasa tidak aman → BERHENTI</li>
                 </ul>
             </div>
             {{-- THINK --}}
