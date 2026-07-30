@@ -3,26 +3,88 @@
 
 @section('content')
 <div class="animate-fade-in-up">
-    {{-- Hero Section --}}
-    <div class="text-center mb-10">
-        <div class="inline-flex flex-wrap items-center justify-center gap-3 mb-6">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200 text-sm font-semibold" style="color: #D97706;">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                LMRA
+    {{-- LMRA Section --}}
+    <div class="mb-8 rounded-2xl border border-amber-200 bg-amber-50 overflow-hidden">
+        {{-- LMRA Header --}}
+        <div class="px-6 py-4 flex items-center gap-3" style="background: linear-gradient(90deg, #92400e 0%, #b45309 100%);">
+            <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-200 text-sm font-semibold" style="color: var(--cabot-red);">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
-                Stop
-            </div>
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 text-sm font-semibold" style="color: #2563EB;">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-                Think
-            </div>
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-sm font-semibold" style="color: #059669;">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                Act
+            <div>
+                <p class="text-xs font-semibold text-amber-200 uppercase tracking-widest">Sebelum Melaporkan</p>
+                <h2 class="text-lg font-extrabold text-white">LMRA — <span class="font-normal">Last Minute Risk Assessment</span></h2>
             </div>
         </div>
+        {{-- LMRA Body --}}
+        <div class="p-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {{-- STOP --}}
+            <div class="rounded-xl bg-white border border-red-200 p-4">
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background: var(--cabot-red);">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--cabot-red);">Langkah 1</p>
+                        <p class="text-base font-extrabold text-gray-900">STOP</p>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mb-2">Berhenti sejenak sebelum mulai bekerja:</p>
+                <ul class="space-y-1.5">
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Hentikan semua aktivitas sejenak (1–5 menit)</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Jangan terburu-buru memulai pekerjaan</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Perhatikan kondisi sekitar dengan seksama</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Jika ragu atau merasa tidak aman — BERHENTI</li>
+                </ul>
+            </div>
+            {{-- THINK --}}
+            <div class="rounded-xl bg-white border border-blue-200 p-4">
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shrink-0">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-blue-600 uppercase tracking-widest">Langkah 2</p>
+                        <p class="text-base font-extrabold text-gray-900">THINK</p>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mb-2">Evaluasi situasi dan identifikasi bahaya:</p>
+                <ul class="space-y-1.5">
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>Apakah ada bahaya baru yang belum diperhitungkan?</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>Apakah izin kerja (PTW) sudah valid dan sesuai?</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>Apakah APD yang digunakan sudah sesuai tugas?</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>Apakah peralatan dalam kondisi baik dan aman?</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>Apakah prosedur darurat (kebakaran, dll) sudah dipahami?</li>
+                </ul>
+            </div>
+            {{-- ACT --}}
+            <div class="rounded-xl bg-white border border-green-200 p-4">
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center shrink-0">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Langkah 3</p>
+                        <p class="text-base font-extrabold text-gray-900">ACT</p>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mb-2">Ambil tindakan yang tepat:</p>
+                <ul class="space-y-1.5">
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>Jika aman → lanjutkan pekerjaan dengan percaya diri</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>Jika ada bahaya → kendalikan risiko terlebih dahulu</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>Laporkan kondisi tidak aman kepada pengawas</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>Jika tidak yakin → jangan mulai, konsultasikan dulu</li>
+                </ul>
+            </div>
+        </div>
+        {{-- LMRA Footer Note --}}
+        <div class="px-5 pb-4">
+            <p class="text-xs text-amber-700 bg-amber-100 rounded-lg px-3 py-2 border border-amber-200">
+                ⚠️ <strong>Ingat:</strong> LMRA adalah lapisan pertahanan terakhir sebelum bekerja. Gunakan formulir di bawah ini untuk melaporkan kejadian atau kondisi tidak aman yang Anda temukan.
+            </p>
+        </div>
+    </div>
+    {{-- Hero Title --}}
+    <div class="text-center mb-10">
         <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
             {{ __('Laporkan') }} <span style="color: var(--cabot-red);">{{ __('Insiden K3') }}</span>
         </h1>
