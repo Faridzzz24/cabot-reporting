@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistem Pelaporan Insiden K3 PT Cabot Indonesia — Laporkan kejadian keselamatan kerja dengan cepat dan mudah.">
-    <title>@yield('title', 'Pelaporan Insiden K3') — PT Cabot Indonesia</title>
+    <meta name="description" content="Sistem Pelaporan Insiden K3 PT Cabot Indonesia - Laporkan kejadian keselamatan kerja dengan cepat dan mudah.">
+    <title>@yield('title', 'Pelaporan Insiden K3') - PT Cabot Indonesia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -197,7 +197,7 @@
     {{-- Footer --}}
     <footer class="border-t border-gray-200 bg-white py-8">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-            <p class="text-sm text-gray-400">&copy; {{ date('Y') }} PT Cabot Indonesia — Safety Reporting System</p>
+            <p class="text-sm text-gray-400">&copy; {{ date('Y') }} PT Cabot Indonesia - Safety Reporting System</p>
             <p class="text-xs text-gray-300 mt-1">Keselamatan adalah prioritas utama.</p>
         </div>
     </footer>
