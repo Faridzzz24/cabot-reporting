@@ -65,7 +65,12 @@
     <table style="width: 100%; border: none; margin-bottom: 20px; font-size: 11px; color: #666;">
         <tr>
             <td style="width: 33%; text-align: left; border: none; padding: 0;">
-                <img src="{{ asset('img/cabot-logo.png') }}" alt="Logo Cabot" style="height: 35px;">
+                @php
+                    $imagePath = public_path('img/cabot-logo.png');
+                    $imageData = base64_encode(file_get_contents($imagePath));
+                    $src = 'data:image/png;base64,' . $imageData;
+                @endphp
+                <img src="{{ $src }}" alt="Logo Cabot" style="height: 35px;">
             </td>
             <td style="width: 34%; text-align: center; border: none; padding: 0;">
                 {{ now()->format('d/m/Y, H:i') }}
@@ -75,7 +80,6 @@
             </td>
         </tr>
     </table>
-    @endif
 
     <div class="header">
         <h2>REKAPITULASI LAPORAN INSIDEN K3</h2>
@@ -116,12 +120,5 @@
         </tbody>
     </table>
 
-    @if(isset($format) && $format === 'pdf')
-    <script>
-        window.onload = function() {
-            window.print();
-        };
-    </script>
-    @endif
 </body>
 </html>

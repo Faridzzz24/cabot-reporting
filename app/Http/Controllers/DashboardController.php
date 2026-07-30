@@ -187,7 +187,9 @@ class DashboardController extends Controller
         $dateStr = now()->format('Y-m-d');
 
         if ($format === 'pdf') {
-            return response()->view('exports.reports', compact('reports', 'format'));
+            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('exports.reports', compact('reports', 'format'))
+                        ->setPaper('a4', 'landscape');
+            return $pdf->download("laporan-insiden-{$dateStr}.pdf");
         }
 
 
