@@ -4,15 +4,12 @@
 @section('content')
 <div class="animate-fade-in-up">
     {{-- LMRA Section --}}
-    <div class="mb-8 rounded-2xl border border-amber-200 bg-amber-50 overflow-hidden">
+    <div class="mb-8 rounded-2xl border border-gray-200 bg-white overflow-hidden">
         {{-- LMRA Header --}}
-        <div class="px-6 py-4 flex items-center gap-3" style="background: linear-gradient(90deg, #92400e 0%, #b45309 100%);">
-            <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
+        <div class="px-6 py-4 flex items-center gap-3">
             <div>
-                <p class="text-xs font-semibold text-amber-200 uppercase tracking-widest">Sebelum Melaporkan</p>
-                <h2 class="text-lg font-extrabold text-white">LMRA — <span class="font-normal">Last Minute Risk Assessment</span></h2>
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Sebelum Melaporkan</p>
+                <h2 class="text-lg font-extrabold text-gray-900">LMRA - <span class="font-normal italic">(Last Minute Risk Assessment)</span></h2>
             </div>
         </div>
         {{-- LMRA Body --}}
@@ -76,12 +73,7 @@
                 </ul>
             </div>
         </div>
-        {{-- LMRA Footer Note --}}
-        <div class="px-5 pb-4">
-            <p class="text-xs text-amber-700 bg-amber-100 rounded-lg px-3 py-2 border border-amber-200">
-                ⚠️ <strong>Ingat:</strong> LMRA adalah lapisan pertahanan terakhir sebelum bekerja. Gunakan formulir di bawah ini untuk melaporkan kejadian atau kondisi tidak aman yang Anda temukan.
-            </p>
-        </div>
+
     </div>
     {{-- Hero Title --}}
     <div class="text-center mb-10">
