@@ -164,7 +164,7 @@
             <div class="flex items-center justify-between h-16">
                 <a href="/" class="flex items-center gap-3 group">
                     <div class="flex items-center gap-3">
-                        <img src="{{ asset('img/Cabot-corp-logo.png') }}" alt="PT Cabot" class="h-12 w-auto object-contain -mt-1.5">
+                        <img src="{{ asset('img/cabot-logo.png') }}" alt="PT Cabot" class="h-12 w-auto object-contain -mt-1.5">
                         <span class="hidden sm:block text-sm text-gray-500 font-medium border-l-2 border-gray-200 pl-3">Safety Reporting System</span>
                     </div>
                 </a>
