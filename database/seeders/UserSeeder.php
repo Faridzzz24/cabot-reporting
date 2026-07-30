@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 'name' => 'SHE Officer',
                 'email' => 'she@ptcabot.com',
                 'password' => 'she12345',
-                'role' => 'she_officer',
+                'role' => 'hse_officer',
             ],
             [
                 'name' => 'Supervisor',
