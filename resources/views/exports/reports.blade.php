@@ -65,12 +65,16 @@
     <table style="width: 100%; border: none; margin-bottom: 20px; font-size: 11px; color: #666;">
         <tr>
             <td style="width: 33%; text-align: left; border: none; padding: 0;">
-                @php
-                    $imagePath = public_path('img/cabot-logo.png');
-                    $imageData = base64_encode(file_get_contents($imagePath));
-                    $src = 'data:image/png;base64,' . $imageData;
-                @endphp
-                <img src="{{ $src }}" alt="Logo Cabot" style="height: 35px;">
+                @if(function_exists('imagecreatefromstring'))
+                    @php
+                        $imagePath = public_path('img/cabot-logo.png');
+                        $imageData = base64_encode(file_get_contents($imagePath));
+                        $src = 'data:image/png;base64,' . $imageData;
+                    @endphp
+                    <img src="{{ $src }}" alt="Logo Cabot" style="height: 35px;">
+                @else
+                    <h2 style="color: #CD171F; margin: 0; padding: 0;">CABOT</h2>
+                @endif
             </td>
             <td style="width: 34%; text-align: center; border: none; padding: 0;">
                 {{ now()->format('d/m/Y, H:i') }}
