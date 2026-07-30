@@ -19,16 +19,16 @@
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
                     </div>
                     <div>
-                        <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--cabot-red);">Langkah 1</p>
+                        <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--cabot-red);">{{ __('Langkah 1') }}</p>
                         <p class="text-base font-extrabold text-gray-900">STOP</p>
                     </div>
                 </div>
-                <p class="text-xs text-gray-500 mb-2">Berhenti sejenak sebelum mulai bekerja:</p>
+                <p class="text-xs text-gray-500 mb-2">{{ __('Berhenti sejenak sebelum mulai bekerja:') }}</p>
                 <ul class="space-y-1.5">
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Hentikan semua aktivitas sejenak (1–5 menit)</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Jangan terburu-buru memulai pekerjaan</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Perhatikan kondisi sekitar dengan seksama</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>Jika ragu atau merasa tidak aman → BERHENTI</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>{{ __('Hentikan semua aktivitas sejenak (1–5 menit)') }}</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>{{ __('Jangan terburu-buru memulai pekerjaan') }}</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>{{ __('Perhatikan kondisi sekitar dengan seksama') }}</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5"></span>{{ __('Jika ragu atau merasa tidak aman → BERHENTI') }}</li>
                 </ul>
             </div>
             {{-- THINK --}}
@@ -38,17 +38,17 @@
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
                     </div>
                     <div>
-                        <p class="text-xs font-bold text-blue-600 uppercase tracking-widest">Langkah 2</p>
+                        <p class="text-xs font-bold text-blue-600 uppercase tracking-widest">{{ __('Langkah 2') }}</p>
                         <p class="text-base font-extrabold text-gray-900">THINK</p>
                     </div>
                 </div>
-                <p class="text-xs text-gray-500 mb-2">Evaluasi situasi dan identifikasi bahaya:</p>
+                <p class="text-xs text-gray-500 mb-2">{{ __('Evaluasi situasi dan identifikasi bahaya:') }}</p>
                 <ul class="space-y-1.5">
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>Apakah ada bahaya baru yang belum diperhitungkan?</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>Apakah izin kerja (PTW) sudah valid dan sesuai?</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>Apakah APD yang digunakan sudah sesuai tugas?</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>Apakah peralatan dalam kondisi baik dan aman?</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>Apakah prosedur darurat (kebakaran, dll) sudah dipahami?</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>{{ __('Apakah ada bahaya baru yang belum diperhitungkan?') }}</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>{{ __('Apakah izin kerja (PTW) sudah valid dan sesuai?') }}</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>{{ __('Apakah APD yang digunakan sudah sesuai tugas?') }}</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>{{ __('Apakah peralatan dalam kondisi baik dan aman?') }}</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5"></span>{{ __('Apakah prosedur darurat (kebakaran, dll) sudah dipahami?') }}</li>
                 </ul>
             </div>
             {{-- ACT --}}
@@ -58,16 +58,16 @@
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     <div>
-                        <p class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Langkah 3</p>
+                        <p class="text-xs font-bold text-emerald-600 uppercase tracking-widest">{{ __('Langkah 3') }}</p>
                         <p class="text-base font-extrabold text-gray-900">ACT</p>
                     </div>
                 </div>
-                <p class="text-xs text-gray-500 mb-2">Ambil tindakan yang tepat:</p>
+                <p class="text-xs text-gray-500 mb-2">{{ __('Ambil tindakan yang tepat:') }}</p>
                 <ul class="space-y-1.5">
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>Jika aman → lanjutkan pekerjaan dengan percaya diri</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>Jika ada bahaya → kendalikan risiko terlebih dahulu</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>Laporkan kondisi tidak aman kepada pengawas</li>
-                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>Jika tidak yakin → jangan mulai, konsultasikan dulu</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>{{ __('Jika aman → lanjutkan pekerjaan dengan percaya diri') }}</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>{{ __('Jika ada bahaya → kendalikan risiko terlebih dahulu') }}</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>{{ __('Laporkan kondisi tidak aman kepada pengawas') }}</li>
+                    <li class="flex items-start gap-2 text-xs text-gray-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>{{ __('Jika tidak yakin → jangan mulai, konsultasikan dulu') }}</li>
                 </ul>
             </div>
         </div>
