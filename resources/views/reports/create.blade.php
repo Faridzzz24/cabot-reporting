@@ -6,14 +6,13 @@
     {{-- LMRA Section --}}
     <div class="mb-8 rounded-2xl border border-gray-200 bg-white overflow-hidden">
         {{-- LMRA Header --}}
-        <div class="px-6 py-4 flex items-center gap-3">
+        <div class="px-5 pt-5 pb-2 flex items-center">
             <div>
-                <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Sebelum Melaporkan</p>
                 <h2 class="text-lg font-extrabold text-gray-900">LMRA - <span class="font-normal italic">(Last Minute Risk Assessment)</span></h2>
             </div>
         </div>
         {{-- LMRA Body --}}
-        <div class="p-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="px-5 pb-5 pt-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
             {{-- STOP --}}
             <div class="rounded-xl bg-white border border-red-200 p-4">
                 <div class="flex items-center gap-2 mb-3">
