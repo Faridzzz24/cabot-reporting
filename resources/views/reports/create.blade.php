@@ -6,10 +6,9 @@
     {{-- LMRA Section --}}
     <div class="mb-8 rounded-2xl border border-gray-200 bg-white overflow-hidden">
         {{-- LMRA Header --}}
-        <div class="px-5 pt-5 pb-2 flex items-center">
-            <div>
-                <h2 class="text-lg font-extrabold text-gray-900">LMRA - <span class="font-normal italic">(Last Minute Risk Assessment)</span></h2>
-            </div>
+        <div class="px-5 pt-5 pb-2 text-center w-full">
+            <h2 class="text-xl font-extrabold text-gray-900">LMRA</h2>
+            <p class="text-sm font-normal italic text-gray-600 mt-0.5">(Last Minute Risk Assessment)</p>
         </div>
         {{-- LMRA Body --}}
         <div class="px-5 pb-5 pt-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
