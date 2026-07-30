@@ -110,7 +110,7 @@
             <div class="absolute top-0 left-0 w-full h-1" style="background: var(--cabot-gradient);"></div>
             <div class="py-5 px-4 border-b border-gray-100 flex justify-center">
                 <a href="{{ route('dashboard') }}" class="block w-full px-2">
-                    <img src="{{ asset('img/Cabot-corp-logo.png') }}" alt="PT Cabot" class="h-8 w-auto object-contain">
+                    <img src="{{ asset('img/Cabot-corp-logo.png') }}" alt="PT Cabot" class="h-16 w-full object-contain">
                 </a>
             </div>
 
