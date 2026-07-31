@@ -13,7 +13,7 @@
         <p class="text-gray-500 text-sm">Akses dashboard terbatas untuk personel yang berwenang.</p>
     </div>
 
-    <form method="POST" action="{{ route('login') }}" class="card-elevated p-6 sm:p-8 space-y-5">
+    <form method="POST" action="{{ url('/login') }}" class="card-elevated p-6 sm:p-8 space-y-5">
         @csrf
 
         <div class="space-y-2">

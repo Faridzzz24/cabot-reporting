@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistem Pelaporan Insiden K3 PT Cabot Indonesia - Laporkan kejadian keselamatan kerja dengan cepat dan mudah.">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Pelaporan Insiden K3') - PT Cabot Indonesia</title>
     <link rel="icon" type="image/png" href="{{ asset('img/Cabot-favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
